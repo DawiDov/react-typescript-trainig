@@ -10,6 +10,8 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/react-dom": "^18.0.5",
+    "@types/react-router-dom": "^5.3.3",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "chokidar": "^3.5.3",
@@ -36,8 +38,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "npx eslint --ext .jsx --ext .js src/",
-    "lint:fix": "npx eslint --ext .jsx --ext .js --fix src/"
+    "lint": "npx eslint --ext .tsx --ext .ts src/",
+    "lint:fix": "npx eslint --ext .tsx --ext .ts --fix src/"
   },
   "eslintConfig": {
     "extends": [
