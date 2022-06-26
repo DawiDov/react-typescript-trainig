@@ -17,9 +17,9 @@ class Article(models.Model):
 
 
 class ArticleText(models.Model):
-  article_id = models.ForeignKey('Article', on_delete=models.CASCADE)
+  article_id = models.ForeignKey('Article', default=0, on_delete=models.CASCADE)
   title = models.CharField(max_length=256, verbose_name='Название статьи')
-  text = HTMLField(verbose_name='Текст статьи')
+  text = HTMLField(verbose_name='Текст статьи', null=True)
   image_1 = models.ImageField(upload_to='uploads/articles', blank=True, verbose_name='Картинка для статьи 1')
   image_2 = models.ImageField(upload_to='uploads/articles', blank=True, verbose_name='Картинка для статьи 2')
   image_3 = models.ImageField(upload_to='uploads/articles', blank=True, verbose_name='Картинка для статьи 3')
@@ -33,7 +33,7 @@ class ArticleText(models.Model):
 
 
 class Extra(models.Model):
-  article_id = models.ForeignKey('Article', on_delete=models.CASCADE)
+  article_id = models.ForeignKey('Article', null=True, on_delete=models.CASCADE)
   title = models.CharField(max_length=256, verbose_name='Название екстра задания')
   text = HTMLField(verbose_name='Текст екстра задания')
   image = models.ImageField(upload_to='uploads/extra', blank=True, verbose_name='Картинка для задания')
@@ -47,7 +47,7 @@ class Extra(models.Model):
 
 
 class Bonus(models.Model):
-  article_id = models.ForeignKey('Article', on_delete=models.CASCADE)
+  article_id = models.ForeignKey('Article', null=True, on_delete=models.CASCADE)
   title = models.CharField(max_length=256, verbose_name='Название для бонуса')
   text_bonus = HTMLField(verbose_name='Текст для бонуса')
   image = models.ImageField(upload_to='uploads/bonus/', blank=True, verbose_name='Картинка для бонуса')

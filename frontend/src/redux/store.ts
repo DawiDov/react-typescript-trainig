@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
+import mainReducer from './baseReducer'
+
 export const store = configureStore({
   reducer: {
-  auth: authReducer,
-  main: mainReducer,
-  articlePage: articlePageReducer,
+    main: mainReducer,
   }
 })
 
