@@ -1,5 +1,6 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Article, ArticleText, Extra, Bonus
+
+from .models import Article, ArticleText, Bonus, Extra
 
 
 class ArcticleSerializer(ModelSerializer):

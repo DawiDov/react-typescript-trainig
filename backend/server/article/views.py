@@ -1,9 +1,9 @@
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
+from .models import Article, ArticleText, Bonus, Extra
 from .pagination import StandardResultsSetPagination
-from .models import Article, ArticleText, Extra, Bonus
-from .serializers import ArcticleSerializer, ArticleTextSerializer, ExtraSerializer, BonusSerializer
+from .serializers import ArcticleSerializer, ArticleTextSerializer, BonusSerializer, ExtraSerializer
 
 
 class ArticleViewSet(ModelViewSet):
@@ -22,6 +22,3 @@ class ExtraViewSet(ModelViewSet):
 class BonusViewSet(ModelViewSet):
     queryset = Bonus.objects.all()
     serializer_class = BonusSerializer
-
-
-

@@ -1,5 +1,7 @@
 from django.db import models
+
 from tinymce.models import HTMLField
+
 
 class Article(models.Model):
   title = models.CharField(max_length=256, verbose_name='Название статьи')
@@ -66,4 +68,3 @@ class Bonus(models.Model):
   class Meta:
     verbose_name = "Бонус задание"
     verbose_name_plural = "Бонус задания"
-  
