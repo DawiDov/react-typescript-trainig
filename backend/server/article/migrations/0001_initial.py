@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Article',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=256, verbose_name='Название статьи')),
                 ('label', models.ImageField(blank=True, upload_to='uploads/labels', verbose_name='Лого статьи')),
                 ('is_blocked', models.BooleanField(default=True, verbose_name='Заблокированно?')),
@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Extra',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=256, verbose_name='Название екстра задания')),
                 ('text', tinymce.models.HTMLField(verbose_name='Текст екстра задания')),
                 ('image', models.ImageField(blank=True, upload_to='uploads/extra', verbose_name='Картинка для задания')),
@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Bonus',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=256, verbose_name='Название для бонуса')),
                 ('text_bonus', tinymce.models.HTMLField(verbose_name='Текст для бонуса')),
                 ('image', models.ImageField(blank=True, upload_to='uploads/bonus/', verbose_name='Картинка для бонуса')),
@@ -60,7 +60,6 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ArticleText',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=256, verbose_name='Название статьи')),
                 ('text', tinymce.models.HTMLField(verbose_name='Текст статьи')),
                 ('image_1', models.ImageField(blank=True, upload_to='uploads/articles', verbose_name='Картинка для статьи 1')),
