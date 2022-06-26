@@ -2,7 +2,7 @@ from django.urls import include, path
 
 from rest_framework.routers import DefaultRouter
 
-from .views import ArticleViewSet, ArticleTextViewSet, ExtraViewSet, BonusViewSet
+from .views import ArticleTextViewSet, ArticleViewSet, BonusViewSet, ExtraViewSet
 
 
 app_name = 'article'
