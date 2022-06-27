@@ -1,12 +1,16 @@
-name: Lint
-
-on: [push]
-
+on: push
+  
 jobs:
-  eslint:
+  lint:
+    name: Lint code base
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: stefanoeb/eslint-action@1.0.2
-        with:
-          files: src/
+    - name: Code checkout
+      uses: actions/checkout@v2
+    
+    - name: Run super-linter
+      uses: github/super-linter/slim@v4
+      env:
+        VALIDATE_ALL_CODEBASE: false
+        DEFAULT_BRANCH: main
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
