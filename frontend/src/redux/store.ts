@@ -1,5 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, MiddlewareArray } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
+import logger from 'redux-logger'
 
 import mainReducer from './mainReducer'
 
@@ -7,6 +8,7 @@ export const store = configureStore({
   reducer: {
     main: mainReducer,
   },
+  middleware: new MiddlewareArray().contact(additionalMiddleware, logger)
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
