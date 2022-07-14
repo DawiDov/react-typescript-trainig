@@ -22,6 +22,8 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "singleAttributePerLine" : "true",
+        "bracketSameLine": "true",
         "prettier/prettier": "error",
         "no-unused-vars": "warn",
         "no-console": "warn",

@@ -1,5 +1,11 @@
 import React from 'react'
 
-const Home = () => <h1> Hello there!</h1>
+interface Text {
+  text: string
+}
+
+const Home = ({ text }: Text) => (
+  <h1>{text}</h1>
+)
 
 export default Home
