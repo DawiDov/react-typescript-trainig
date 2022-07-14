@@ -5,7 +5,10 @@ interface Text {
 }
 
 const Home = ({ text }: Text) => (
-  <h1>{text}</h1>
+  <>
+    <h1>{text}</h1>
+    <h2>123</h2>
+  </>
 )
 
 export default Home
