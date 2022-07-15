@@ -1,4 +1,12 @@
-import { Paper, Typography } from '@mui/material'
+import {
+  Timeline,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDot,
+  TimelineItem,
+  TimelineSeparator,
+} from '@mui/lab'
+import { Divider, Pagination, Paper, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 
@@ -13,17 +21,27 @@ const titleList: Array<string> = [
 ]
 
 const Home = () => (
-  <Box sx={{ height: '100vh', padding: '20px', margin: '40px auto' }}>
-    {titleList.map((day) => (
-      <Paper
-        key={day}
-        elevation={4}
-        sx={{ marginBottom: '30px', padding: '10px 50px' }}>
-        <Typography variant="h4" sx={{ textTransform: 'uper' }}>
-          {day}
-        </Typography>
-      </Paper>
-    ))}
+  <Box sx={{ padding: '10px', margin: '40px auto' }}>
+    <Timeline>
+      {titleList.map((day) => (
+        <TimelineItem key={day}>
+          <TimelineSeparator>
+            <TimelineDot />
+            <TimelineConnector />
+          </TimelineSeparator>
+          <TimelineContent>
+            <Paper elevation={7} sx={{ padding: '10px 20px', width: '50px' }}>
+              <Typography
+                sx={{ textTransform: 'uppercase', minWidth: '100px' }}>
+                {day}
+              </Typography>
+            </Paper>
+          </TimelineContent>
+        </TimelineItem>
+      ))}
+    </Timeline>
+    <Divider sx={{ margin: '20px' }} />
+    <Pagination count={4} color="primary" />
   </Box>
 )
 
