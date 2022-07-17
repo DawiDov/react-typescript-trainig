@@ -6,7 +6,7 @@ const initialState: stateType = {
   count: 0,
 }
 
-export const mainSlice = createSlice({
+export const articleSlice = createSlice({
   name: 'main',
   initialState,
   reducers: {
@@ -19,6 +19,6 @@ export const mainSlice = createSlice({
   },
 })
 
-export const { setArticles } = mainSlice.actions
+export const { setArticles } = articleSlice.actions
 
-export default mainSlice.reducer
+export default articleSlice.reducer

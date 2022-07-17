@@ -1,13 +1,14 @@
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 
-const getToken = async (log: string, pass: string) => {
-  const data = {
-    username: log as string | undefined,
-    password: pass as string | undefined,
+const getToken = async (authData: { username: string; password: string }) => {
+  const url: string = 'http://localhost/api-token-auth/'
+  const { data, status } = await axios.post(url, authData)
+  if (status === 200) {
+    localStorage.setItem('token', data.token)
+    alert('вы авторизовванны')
+  } else {
+    alert('ошибка авторизации')
   }
-  const url: string = 'http://127.0.0.1:8000/api-token-auth/'
-  const response: AxiosResponse = await axios.post(url, data)
-  console.log(response.data)
 }
 
-export default getToken 
+export default getToken
