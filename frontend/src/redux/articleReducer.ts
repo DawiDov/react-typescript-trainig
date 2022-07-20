@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { stateType, customPayloadType } from './types'
+import { stateType, customPayloadType } from 'redux/types'
 
 const initialState: stateType = {
   articles: null,
