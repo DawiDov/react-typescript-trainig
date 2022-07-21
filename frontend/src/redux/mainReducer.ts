@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { stateType, customPayloadType } from 'redux/types'
+import { stateType, customPayloadType } from './types'
 
 const initialState: stateType = {
   articles: null,
   count: 0,
 }
 
-export const articleSlice = createSlice({
+export const mainSlice = createSlice({
   name: 'main',
   initialState,
   reducers: {
@@ -19,6 +19,6 @@ export const articleSlice = createSlice({
   },
 })
 
-export const { setArticles } = articleSlice.actions
+export const { setArticles } = mainSlice.actions
 
-export default articleSlice.reducer
+export default mainSlice.reducer
