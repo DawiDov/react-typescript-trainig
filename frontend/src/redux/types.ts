@@ -1,4 +1,3 @@
-
 export interface stateType {
   articles: Array<string> | null
   count: number
