@@ -1,8 +1,11 @@
 import React from 'react'
-import { AppBar, Toolbar } from '@mui/material'
+import { AppBar, Button, Toolbar } from '@mui/material'
 
 const Header = () => (
   <header>
+    {localStorage.getItem('token') ? (
+      <Button onClick={() => localStorage.removeItem('token')}>выйти</Button>
+    ) : null}
     <AppBar
       color="primary"
       position="sticky"

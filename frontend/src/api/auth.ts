@@ -5,7 +5,6 @@ const getToken = async (authData: { username: string; password: string }) => {
   const { data, status } = await axios.post(url, authData)
   if (status === 200) {
     localStorage.setItem('token', data.token)
-    alert('вы авторизовванны')
   } else {
     alert('ошибка авторизации')
   }

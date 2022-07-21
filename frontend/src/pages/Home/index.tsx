@@ -23,9 +23,8 @@ const titleList: Array<string> = [
 ]
 
 const Home = () => {
-  if (!localStorage.getItem('token')) {
-    return <Navigate to="/login" replace />
-  }
+  if (!localStorage.getItem('token')) return <Navigate to="/login" replace />
+
   return (
     <Box sx={{ padding: '10px', margin: '40px auto' }}>
       <Timeline>

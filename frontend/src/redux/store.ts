@@ -3,7 +3,7 @@ import articleReducer from 'redux/articleReducer'
 
 export const store = configureStore({
   reducer: {
-    articleReducer,
+    articles: articleReducer,
   },
 })
 export type AppStore = ReturnType<typeof store.getState>
