@@ -1,10 +1,14 @@
 import React from 'react'
+import { Navigate } from 'react-router-dom'
 import { AppBar, Button, Toolbar } from '@mui/material'
 
 const Header = () => (
   <header>
     {localStorage.getItem('token') ? (
-      <Button onClick={() => localStorage.removeItem('token')}>выйти</Button>
+      <>
+        <Button onClick={() => localStorage.removeItem('token')}>выйти</Button>
+        <Navigate to="/login" replace />
+      </>
     ) : null}
     <AppBar
       color="primary"

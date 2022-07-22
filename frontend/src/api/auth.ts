@@ -1,13 +1,14 @@
 import axios from 'axios'
 
-const getToken = async (authData: { username: string; password: string }) => {
-  const url: string = 'http://localhost/api-token-auth/'
-  const { data, status } = await axios.post(url, authData)
-  if (status === 200) {
-    localStorage.setItem('token', data.token)
-  } else {
-    alert('ошибка авторизации')
-  }
+interface Token {
+  token: string
 }
-
+const getToken = (authData: { username: string; password: string }) => {
+  const url: string = 'http://localhost/api-token-auth/'
+  axios
+    .post(url, authData)
+    .then(({ data }: { data: Token }) =>
+      localStorage.setItem('token', data.token),
+    )
+}
 export default getToken

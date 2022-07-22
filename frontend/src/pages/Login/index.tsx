@@ -1,16 +1,15 @@
-import React, { FC, useState, useCallback } from 'react'
+import React, { FC, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import getToken from 'api/auth'
 import { FormLabel } from '@mui/material'
 
 const Login: FC = () => {
-  const [username, setusername] = useState<string>('')
+  const [username, setUsername] = useState<string>('')
   const [password, setPass] = useState<string>('')
 
-  const authHandler = useCallback(() => {
+  const authHandler = () => {
     getToken({ username, password })
-  }, [])
-
+  }
   if (localStorage.getItem('token')) return <Navigate to="/" replace />
   return (
     <form>
@@ -18,7 +17,7 @@ const Login: FC = () => {
         Login:
         <input
           value={username}
-          onChange={(e) => setusername(e.currentTarget.value)}
+          onChange={(e) => setUsername(e.currentTarget.value)}
           type="text"
           name="name"
         />
