@@ -1,28 +1,38 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom'
-import { AppBar, Button, Toolbar } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
-const Header = () => (
-  <header>
-    {localStorage.getItem('token') ? (
-      <>
-        <Button onClick={() => localStorage.removeItem('token')}>выйти</Button>
-        <Navigate to="/login" replace />
-      </>
-    ) : null}
-    <AppBar
-      color="primary"
-      position="sticky"
-      sx={{
-        top: '0',
-        width: '100vw',
-        padding: '10px',
-      }}>
-      <Toolbar variant="dense">
-        <h1>Course</h1>
-      </Toolbar>
-    </AppBar>
-  </header>
-)
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
 
+const Header = () => {
+  const router = useNavigate()
+  return (
+    <header>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            />
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Курс
+            </Typography>
+            <p>name</p>
+            <Button onClick={() => router('/login')} color="inherit">
+              Выйти
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </header>
+  )
+}
 export default Header

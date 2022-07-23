@@ -1,10 +1,21 @@
-import { configureStore } from '@reduxjs/toolkit'
-import articleReducer from 'redux/articleReducer'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import reducers from 'redux/reducers'
 
-export const store = configureStore({
-  reducer: {
-    articles: articleReducer,
-  },
-})
-export type AppStore = ReturnType<typeof store.getState>
+const rootReducer = combineReducers(reducers)
+
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
+  }
+}
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+export const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk)),
+)
+
+export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch

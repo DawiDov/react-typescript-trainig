@@ -1,5 +1,4 @@
 import React, { FC, useState } from 'react'
-import { Navigate } from 'react-router-dom'
 import getToken from 'api/auth'
 import { FormLabel } from '@mui/material'
 
@@ -10,7 +9,6 @@ const Login: FC = () => {
   const authHandler = () => {
     getToken({ username, password })
   }
-  if (localStorage.getItem('token')) return <Navigate to="/" replace />
   return (
     <form>
       <FormLabel>

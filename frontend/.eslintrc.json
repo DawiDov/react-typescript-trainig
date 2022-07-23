@@ -21,7 +21,9 @@
         "prefer-arrow-functions",
         "@typescript-eslint"
     ],
-    "rules": {
+    "rules": { 
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"],
         "prettier/prettier": "error",
         "no-unused-vars": "warn",
         "no-console": "warn",
@@ -39,7 +41,7 @@
         ],
         "jsx-a11y/anchor-is-valid": 1,
         "jsx-a11y/label-has-associated-control": 1,
-        "indent": ["error", 2],
+        // "indent": ["error", 2],
         "no-undef": 1,
         "quotes": ["error", "single"],
         "semi": ["error", "never"],
