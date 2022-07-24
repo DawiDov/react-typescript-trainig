@@ -1,14 +1,10 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
-interface Token {
-  token: string
-}
 const getToken = (authData: { username: string; password: string }) => {
   const url: string = 'http://localhost/api-token-auth/'
-  axios
-    .post(url, authData)
-    .then(({ data }: { data: Token }) =>
-      localStorage.setItem('token', data.token),
-    )
+  axios.post(url, authData).then((resp: AxiosResponse) => {
+    console.log(resp)
+    localStorage.setItem('token', resp.data.token)
+  })
 }
 export default getToken
