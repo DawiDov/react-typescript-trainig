@@ -2,21 +2,16 @@ import React, { FC, useState } from 'react'
 import { Button, Form, Input } from 'antd'
 import 'antd/dist/antd.css'
 import rules from 'utils/rules'
-import getToken from 'api/auth'
-import authActionCreators from 'redux/reducers/auth/actionCreators'
-import { useTypedDispatch } from 'redux/store'
+import { useTypedSelector } from 'redux/store'
+import useActions from 'hooks/useActions'
 
 const AuthForm: FC = () => {
   const [username, setUsername] = useState<string>('')
   const [password, setPass] = useState<string>('')
-
-  const dispatch = useTypedDispatch()
-
-  const authHandler = () => {
-    getToken({ username, password })
-  }
+  const { login } = useActions()
+  const { error, isLoading } = useTypedSelector((state) => state.authReducer)
   const submit = () => {
-    dispatch(authActionCreators.login(username, password))
+    login(username, password)
   }
 
   return (
@@ -27,6 +22,7 @@ const AuthForm: FC = () => {
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       autoComplete="off">
+      {error && <div style={{ color: 'red' }}>{error}</div>}
       <Form.Item
         label="User"
         name="username"
@@ -48,7 +44,7 @@ const AuthForm: FC = () => {
       </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button onClick={authHandler} type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" loading={isLoading}>
           Войти
         </Button>
       </Form.Item>

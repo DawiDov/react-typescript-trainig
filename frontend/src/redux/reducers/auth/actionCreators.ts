@@ -4,7 +4,6 @@ import {
   SetAuthAction,
   SetErrorAction,
   SetIsLoadingAction,
-  SetUserAction,
 } from 'redux/reducers/auth/types'
 import { AppDispatch } from 'redux/store'
 
@@ -12,10 +11,6 @@ const authActionCreators = {
   setIsAuth: (isAuth: boolean): SetAuthAction => ({
     type: AuthActionEnum.SET_AUTH,
     payload: isAuth,
-  }),
-  setUser: (user: string): SetUserAction => ({
-    type: AuthActionEnum.SET_USER,
-    payload: user,
   }),
   setIsLoading: (isLoading: boolean): SetIsLoadingAction => ({
     type: AuthActionEnum.SET_IS_LOADING,
@@ -30,12 +25,24 @@ const authActionCreators = {
       const url: string = 'http://localhost/api-token-auth/'
       try {
         dispatch(authActionCreators.setIsLoading(true))
-        const response = await axios.post(url, { username, password })
-        console.log(response)
+        const resp = await axios.post(url, { username, password })
+        localStorage.setItem('username', username)
+        localStorage.setItem('token', resp.data.token)
+        dispatch(authActionCreators.setIsAuth(true))
       } catch (e) {
-        dispatch(authActionCreators.setError('Произошда ошибка при логине'))
+        dispatch(authActionCreators.setError('Ошибка авторизации'))
       }
+      dispatch(authActionCreators.setIsLoading(false))
     },
+  logout: () => async (dispatch: AppDispatch) => {
+    try {
+      localStorage.removeItem('username')
+      localStorage.removeItem('token')
+      dispatch(authActionCreators.setIsAuth(false))
+    } catch (e) {
+      console.log(e) // eslint-disable-line
+    }
+  },
 }
 
 export default authActionCreators

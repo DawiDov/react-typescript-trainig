@@ -1,16 +1,17 @@
 export interface AuthState {
   isAuth: boolean
-  user: string
   isLoading: boolean
   error: string
 }
 
+/* eslint-disable */
 export enum AuthActionEnum {
   SET_AUTH = 'SET-AUTH',
   SET_USER = 'SET-USER',
   SET_IS_LOADING = 'SET-IS-LOADING',
   SET_ERROR = 'SET-ERROR',
 }
+/* eslint-enable */
 
 export interface SetAuthAction {
   type: AuthActionEnum.SET_AUTH

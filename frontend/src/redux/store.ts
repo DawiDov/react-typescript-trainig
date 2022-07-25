@@ -11,6 +11,7 @@ import reducers from 'redux/reducers'
 
 // Setup Redux Devtools
 declare global {
+  // eslint-disable-next-line
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
   }
