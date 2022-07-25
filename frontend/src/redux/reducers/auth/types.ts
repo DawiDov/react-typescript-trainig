@@ -7,7 +7,6 @@ export interface AuthState {
 /* eslint-disable */
 export enum AuthActionEnum {
   SET_AUTH = 'SET-AUTH',
-  SET_USER = 'SET-USER',
   SET_IS_LOADING = 'SET-IS-LOADING',
   SET_ERROR = 'SET-ERROR',
 }
@@ -16,11 +15,6 @@ export enum AuthActionEnum {
 export interface SetAuthAction {
   type: AuthActionEnum.SET_AUTH
   payload: boolean
-}
-
-export interface SetUserAction {
-  type: AuthActionEnum.SET_USER
-  payload: string
 }
 
 export interface SetIsLoadingAction {
@@ -33,8 +27,4 @@ export interface SetErrorAction {
   payload: string
 }
 
-export type AuthAction =
-  | SetAuthAction
-  | SetUserAction
-  | SetIsLoadingAction
-  | SetErrorAction
+export type AuthAction = SetAuthAction | SetIsLoadingAction | SetErrorAction
