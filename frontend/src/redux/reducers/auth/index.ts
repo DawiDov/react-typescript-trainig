@@ -6,6 +6,9 @@ import {
 
 const initialState: AuthState = {
   isAuth: false,
+  user: '',
+  isLoading: false,
+  error: '',
 }
 
 const authReducer = (state = initialState, action: AuthAction): AuthState => {  // eslint-disable-line
@@ -14,6 +17,22 @@ const authReducer = (state = initialState, action: AuthAction): AuthState => {  
       return {
         ...state,
         isAuth: action.payload,
+      }
+    case AuthActionEnum.SET_USER:
+      return {
+        ...state,
+        user: action.payload,
+      }
+    case AuthActionEnum.SET_IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
+      }
+    case AuthActionEnum.SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        isLoading: false,
       }
     default:
       return state

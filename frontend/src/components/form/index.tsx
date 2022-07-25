@@ -1,18 +1,27 @@
 import React, { FC, useState } from 'react'
 import { Button, Form, Input } from 'antd'
 import 'antd/dist/antd.css'
+import rules from 'utils/rules'
 import getToken from 'api/auth'
+import authActionCreators from 'redux/reducers/auth/actionCreators'
+import { useTypedDispatch } from 'redux/store'
 
 const AuthForm: FC = () => {
   const [username, setUsername] = useState<string>('')
   const [password, setPass] = useState<string>('')
 
+  const dispatch = useTypedDispatch()
+
   const authHandler = () => {
     getToken({ username, password })
+  }
+  const submit = () => {
+    dispatch(authActionCreators.login(username, password))
   }
 
   return (
     <Form
+      onFinish={submit}
       name="basic"
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 16 }}
@@ -21,9 +30,7 @@ const AuthForm: FC = () => {
       <Form.Item
         label="User"
         name="username"
-        rules={[
-          { required: true, message: 'Пожалуйста введите имя пользователя!' },
-        ]}>
+        rules={[rules.required('Введите имя пользователя!')]}>
         <Input
           onChange={(e) => setUsername(e.currentTarget.value)}
           value={username}
@@ -33,7 +40,7 @@ const AuthForm: FC = () => {
       <Form.Item
         label="Pass"
         name="password"
-        rules={[{ required: true, message: 'Пожалуйста введите пароль!' }]}>
+        rules={[rules.required('Введите пароль!')]}>
         <Input.Password
           onChange={(e) => setPass(e.currentTarget.value)}
           value={password}

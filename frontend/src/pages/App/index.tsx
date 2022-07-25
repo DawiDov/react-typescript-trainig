@@ -3,7 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import Home from 'pages/Home'
 import Login from 'pages/Login'
 import Layout from 'components/layout/Layout'
-import useTypedSelector from 'hooks/useTypedSelector'
+import { useTypedSelector } from 'redux/store'
 
 const App = () => {
   const isAuth = useTypedSelector((state) => state.authReducer.isAuth)
