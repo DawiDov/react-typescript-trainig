@@ -1,42 +1,17 @@
-import React, { FC, useState, useCallback } from 'react'
-import { Navigate } from 'react-router-dom'
-import getToken from 'api/auth'
-import { FormLabel } from '@mui/material'
+import React, { FC } from 'react'
+import { Layout, Row, Card } from 'antd'
+import AuthForm from 'components/form'
+import 'antd/dist/antd.css'
+import './index.sass'
 
-const Login: FC = () => {
-  const [username, setusername] = useState<string>('')
-  const [password, setPass] = useState<string>('')
-
-  const authHandler = useCallback(() => {
-    getToken({ username, password })
-  }, [])
-
-  if (localStorage.getItem('token')) return <Navigate to="/" replace />
-  return (
-    <form>
-      <FormLabel>
-        Login:
-        <input
-          value={username}
-          onChange={(e) => setusername(e.currentTarget.value)}
-          type="text"
-          name="name"
-        />
-      </FormLabel>
-      <FormLabel>
-        Password:
-        <input
-          value={password}
-          onChange={(e) => setPass(e.currentTarget.value)}
-          type="text"
-          name="name"
-        />
-      </FormLabel>
-      <button type="button" onClick={authHandler}>
-        Авторизация
-      </button>
-    </form>
-  )
-}
+const Login: FC = () => (
+  <Layout>
+    <Row justify="center" align="middle" className="h100">
+      <Card className="loginCard">
+        <AuthForm />
+      </Card>
+    </Row>
+  </Layout>
+)
 
 export default Login
