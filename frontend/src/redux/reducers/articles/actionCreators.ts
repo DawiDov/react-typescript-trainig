@@ -2,19 +2,29 @@ import axios from 'axios'
 import {
   ArticlesActionEnum,
   SetArticlesAction,
-  SetIsBlockAction,
+  SetCountAction,
+  SetNextAction,
+  SetPreviousAction,
   TypeArticles,
 } from 'redux/reducers/articles/types'
 import { AppDispatch } from 'redux/store'
 
 const articlesActionCreators = {
-  setArticles: (articles: TypeArticles): SetArticlesAction => ({
+  setArticles: (articles: Array<TypeArticles>): SetArticlesAction => ({
     type: ArticlesActionEnum.SET_ARTICLES,
     payload: articles,
   }),
-  setIsBlock: (isBlock: boolean): SetIsBlockAction => ({
-    type: ArticlesActionEnum.SET_IS_BLOCK,
-    payload: isBlock,
+  setCount: (count: number): SetCountAction => ({
+    type: ArticlesActionEnum.SET_COUNT,
+    payload: count,
+  }),
+  setNext: (next: string): SetNextAction => ({
+    type: ArticlesActionEnum.SET_NEXT,
+    payload: next,
+  }),
+  setPrevious: (previous: string): SetPreviousAction => ({
+    type: ArticlesActionEnum.SET_PREVIOUS,
+    payload: previous,
   }),
   getArticles: () => async (dispatch: AppDispatch) => {
     const token: string | null = localStorage.getItem('token')
@@ -26,7 +36,10 @@ const articlesActionCreators = {
     }
     try {
       const resp = await axios.get(url, { headers: requestHeaders })
-      dispatch(articlesActionCreators.setArticles(resp.data))
+      dispatch(articlesActionCreators.setCount(resp.data.count))
+      dispatch(articlesActionCreators.setNext(resp.data.next))
+      dispatch(articlesActionCreators.setPrevious(resp.data.previous))
+      dispatch(articlesActionCreators.setArticles(resp.data.results))
     } catch (e) {
       console.log(e) // eslint-disable-line
     }
