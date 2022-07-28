@@ -1,6 +1,6 @@
 export interface TypeArticles {
   pk: number
-  tile: string
+  title: string
   label: string
   is_blocked: boolean
 }

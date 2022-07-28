@@ -7,7 +7,7 @@ from .serializers import ArcticleSerializer, ArticleTextSerializer, BonusSeriali
 
 
 class ArticleViewSet(ModelViewSet):
-    queryset = Article.objects.all()
+    queryset = Article.objects.all().order_by("pk")
     serializer_class = ArcticleSerializer
     pagination_class = StandardResultsSetPagination
 
