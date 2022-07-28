@@ -23,7 +23,7 @@ const Tile: React.FC<TypeArticles> = ({ pk, title, label, is_blocked }) => ( // 
         justifyContent="space-between"
         alignItems="center"
         sx={{
-          padding: '0 35px 0 20px',
+          padding: '0 15px 0 20px',
         }}>
         <Avatar
           variant="square"
@@ -31,11 +31,11 @@ const Tile: React.FC<TypeArticles> = ({ pk, title, label, is_blocked }) => ( // 
           src={is_blocked ? lock : label} // eslint-disable-line
           sx={{ margin: '0 5px 0 0', width: '60px', height: '60px' }}
         />
-        <Box sx={{ textAlign: 'center', maxWidth: '220px' }}>
+        <Box sx={{ textAlign: 'center', maxWidth: '200px' }}>
           <Typography
             sx={{
               wordWrap: 'break-word',
-              fontSize: '25px',
+              fontSize: '22px',
               fontFamily: 'Jost, sans-serif',
             }}>
             {title.charAt(0).toUpperCase() + title.slice(1)}
