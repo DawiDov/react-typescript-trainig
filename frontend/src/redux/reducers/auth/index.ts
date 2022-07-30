@@ -1,7 +1,7 @@
 import {
   AuthState,
   AuthActionEnum,
-  AuthAction,
+  AuthActions,
 } from 'redux/reducers/auth/types'
 
 const initialState: AuthState = {
@@ -10,7 +10,7 @@ const initialState: AuthState = {
   error: '',
 }
 
-const authReducer = (state = initialState, action: AuthAction): AuthState => {  // eslint-disable-line
+const authReducer = (state = initialState, action: AuthActions): AuthState => {  // eslint-disable-line
   switch (action.type) {
     case AuthActionEnum.SET_AUTH:
       return {

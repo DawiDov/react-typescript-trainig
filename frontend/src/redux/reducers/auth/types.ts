@@ -27,4 +27,4 @@ export interface SetErrorAction {
   payload: string
 }
 
-export type AuthAction = SetAuthAction | SetIsLoadingAction | SetErrorAction
+export type AuthActions = SetAuthAction | SetIsLoadingAction | SetErrorAction

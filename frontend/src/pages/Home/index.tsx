@@ -1,49 +1,44 @@
-import {
-  Timeline,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-  TimelineItem,
-  TimelineSeparator,
-} from '@mui/lab'
+import React, { useEffect } from 'react'
 
-import { Divider, Pagination, Paper, Typography } from '@mui/material'
-import { Box } from '@mui/system'
-import React, { FC } from 'react'
+import useActions from 'hooks/useActions'
+import { useTypedSelector } from 'redux/store'
 
-const titleList: Array<string> = [
-  'day 1',
-  'day 2',
-  'day 3',
-  'day 4',
-  'day 5',
-  'day 6',
-  'day 7',
-]
+import { TypeArticles } from 'redux/reducers/articles/types'
 
-const Home: FC = () => (
-  <Box sx={{ padding: '10px', margin: '40px auto' }}>
-    <Timeline>
-      {titleList.map((day) => (
-        <TimelineItem key={day}>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>
-            <Paper elevation={7} sx={{ padding: '10px 20px', width: '50px' }}>
-              <Typography
-                sx={{ textTransform: 'uppercase', minWidth: '100px' }}>
-                {day}
-              </Typography>
-            </Paper>
-          </TimelineContent>
-        </TimelineItem>
-      ))}
-    </Timeline>
-    <Divider sx={{ margin: '20px' }} />
-    <Pagination count={4} color="primary" />
-  </Box>
-)
+import Tile from 'components/tile'
+import Pagi from 'components/pagi'
+
+import { Container, Grid } from '@mui/material'
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
+
+const Home: React.FC = () => {
+  const { getArticles } = useActions()
+  useEffect(() => {
+    getArticles()
+  }, [])
+  const { articles } = useTypedSelector((state) => ({
+    articles: state.articlesReducer.articles,
+  }))
+  return (
+    <Container
+      sx={{
+        backgroundColor: '#FFDEE9',
+        backgroundImage: 'linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%)',
+      }}>
+      <Grid
+        container
+        direction="column"
+        justifyContent="space-evenly"
+        alignItems="center"
+        sx={{ height: 'calc(100vh - 60px)' }}>
+        {articles &&
+          articles.map(
+            (elem: TypeArticles): ReactJSXElement => <Tile {...elem} />, // eslint-disable-line
+          )}
+        <Pagi />
+      </Grid>
+    </Container>
+  )
+}
 
 export default Home
