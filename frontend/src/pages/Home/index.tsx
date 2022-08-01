@@ -4,21 +4,31 @@ import useActions from 'hooks/useActions'
 import { useTypedSelector } from 'redux/store'
 
 import { TypeArticles } from 'redux/reducers/articles/types'
+import { Navigate } from 'react-router-dom'
 
 import Tile from 'components/tile'
 import Pagi from 'components/pagi'
 
 import { Container, Grid } from '@mui/material'
 import { ReactJSXElement } from '@emotion/react/types/jsx-namespace'
+import authTokenHandler from 'redux/reducers/auth/authStorage'
 
 const Home: React.FC = () => {
+  const isToken = authTokenHandler.checkToken()
+
   const { getArticles } = useActions()
+
   useEffect(() => {
     getArticles()
   }, [])
+
   const { articles } = useTypedSelector((state) => ({
     articles: state.articlesReducer.articles,
   }))
+
+  if (!isToken) {
+    return <Navigate to="/login" replace />
+  }
   return (
     <Container
       sx={{

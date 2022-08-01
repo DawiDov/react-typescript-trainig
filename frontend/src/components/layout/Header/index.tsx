@@ -5,14 +5,13 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
-import authActionCreators from 'redux/reducers/auth/actionCreators'
-import { useTypedDispatch } from 'redux/store'
+import useActions from 'hooks/useActions'
 
 const Header = () => {
-  const dispatch = useTypedDispatch()
+  const { logout } = useActions()
   const userName = localStorage.getItem('username')
   const exitHandler = () => {
-    dispatch(authActionCreators.logout())
+    logout()
   }
   return (
     <header>
