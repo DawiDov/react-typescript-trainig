@@ -7,8 +7,6 @@ export interface TypeArticles {
 
 export interface TypeArticlesState {
   count: number
-  next: string | null
-  previous: string | null
   articles: Array<TypeArticles> | null
 }
 
@@ -31,18 +29,4 @@ export interface SetCountAction {
   payload: number
 }
 
-export interface SetNextAction {
-  type: ArticlesActionEnum.SET_NEXT
-  payload: string
-}
-
-export interface SetPreviousAction {
-  type: ArticlesActionEnum.SET_PREVIOUS
-  payload: string
-}
-
-export type AtrticlesActions =
-  | SetArticlesAction
-  | SetCountAction
-  | SetNextAction
-  | SetPreviousAction
+export type AtrticlesActions = SetArticlesAction | SetCountAction
