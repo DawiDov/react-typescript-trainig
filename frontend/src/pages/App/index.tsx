@@ -1,32 +1,18 @@
-import React, { useEffect } from 'react'
-import { Route, Routes, Navigate } from 'react-router-dom'
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
 import Home from 'pages/Home'
 import Login from 'pages/Login'
 import Layout from 'components/layout/Layout'
-import { useTypedSelector } from 'redux/store'
-import useActions from 'hooks/useActions'
+import ArticlePage from 'pages/articlePage'
 
-const App = () => {
-  const { setIsAuth } = useActions()
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      setIsAuth(true)
-    }
-  }, [])
-  const { isAuth } = useTypedSelector((state) => state.authReducer)
-  return isAuth ? (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
-  ) : (
-    <Routes>
+const App = () => (
+  <Routes>
+    <Route path="/" element={<Layout />}>
       <Route path="login" element={<Login />} />
-      <Route path="*" element={<Navigate to="login" replace />} />
-    </Routes>
-  )
-}
+      <Route path="articles" element={<Home />} />
+      <Route path="articles/:id" element={<ArticlePage />} />
+    </Route>
+  </Routes>
+)
 
 export default App

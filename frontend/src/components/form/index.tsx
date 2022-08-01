@@ -1,11 +1,11 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, Form, Input } from 'antd'
 import 'antd/dist/antd.css'
 import rules from 'utils/rules'
 import { useTypedSelector } from 'redux/store'
 import useActions from 'hooks/useActions'
 
-const AuthForm: FC = () => {
+const AuthForm: React.FC = () => {
   const [username, setUsername] = useState<string>('')
   const [password, setPass] = useState<string>('')
   const { login } = useActions()
