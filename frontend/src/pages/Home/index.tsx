@@ -15,11 +15,11 @@ import authTokenHandler from 'redux/reducers/auth/authStorage'
 
 const Home: React.FC = () => {
   const isToken = authTokenHandler.checkToken()
-
-  const { getArticles } = useActions()
+  const { getArticles, setIsBackButton } = useActions()
 
   useEffect(() => {
     getArticles()
+    setIsBackButton(false)
   }, [])
 
   const { articles } = useTypedSelector((state) => ({
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
         sx={{ height: 'calc(100vh - 60px)' }}>
         {articles &&
           articles.map(
-            (elem: TypeArticles): ReactJSXElement => <Tile {...elem} />, // eslint-disable-line
+            (elem: TypeArticles): ReactJSXElement => <Tile key={elem.pk} {...elem} />, // eslint-disable-line
           )}
         <Pagi />
       </Grid>
