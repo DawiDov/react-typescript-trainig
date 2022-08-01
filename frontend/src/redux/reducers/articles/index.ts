@@ -6,8 +6,6 @@ import {
 
 const initialState = {
   count: 0,
-  next: null,
-  previous: null,
   articles: null,
 }
 
@@ -20,16 +18,6 @@ const articlesReducer = (
       return {
         ...state,
         count: action.payload,
-      }
-    case ArticlesActionEnum.SET_NEXT:
-      return {
-        ...state,
-        next: action.payload,
-      }
-    case ArticlesActionEnum.SET_PREVIOUS:
-      return {
-        ...state,
-        previous: action.payload,
       }
     case ArticlesActionEnum.SET_ARTICLES:
       return {
