@@ -36,10 +36,14 @@ const Header = () => {
               edge="start"
               color="inherit"
               aria-label="menu"
-              sx={{ mr: 2 }}
             />
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Курс
+            <Typography
+              component="div"
+              sx={{
+                flexGrow: 1,
+                fontSize: '11px',
+              }}>
+              Мастерская Желаний
             </Typography>
             <Box>
               {!isBackButton ? (
