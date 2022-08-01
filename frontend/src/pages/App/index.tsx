@@ -8,10 +8,10 @@ import ArticlePage from 'pages/articlePage'
 const App = () => (
   <Routes>
     <Route path="/" element={<Layout />}>
-      <Route path="login" element={<Login />} />
       <Route path="articles" element={<Home />} />
       <Route path="articles/:id" element={<ArticlePage />} />
     </Route>
+    <Route path="login" element={<Login />} />
   </Routes>
 )
 
