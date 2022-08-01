@@ -7,7 +7,10 @@ import 'components/tile/index.sass'
 
 const Tile: React.FC<TypeArticles> = ({ pk, title, label, is_blocked }) => ( // eslint-disable-line
   <Box key={pk}>
-    <Link to={`articles${pk}`}>
+    <Link
+      to={`articles${pk}`}
+      style={is_blocked ? { pointerEvents: 'none' } : undefined} // eslint-disable-line
+    >
       <Paper
         className="tile"
         elevation={5}
