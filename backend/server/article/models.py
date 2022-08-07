@@ -21,7 +21,7 @@ class Article(models.Model):
 class ArticleText(models.Model):
   article_id = models.ForeignKey('Article', default=0, on_delete=models.CASCADE)
   title = models.CharField(max_length=256, verbose_name='Название статьи')
-  text = HTMLField(verbose_name='Текст статьи', null=True)
+  text = HTMLField(verbose_name='Текст статьи 1', null=True, blank=True)
   image_1 = models.ImageField(upload_to='uploads/articles', blank=True, verbose_name='Картинка для статьи 1')
   image_2 = models.ImageField(upload_to='uploads/articles', blank=True, verbose_name='Картинка для статьи 2')
   image_3 = models.ImageField(upload_to='uploads/articles', blank=True, verbose_name='Картинка для статьи 3')
@@ -51,8 +51,8 @@ class Extra(models.Model):
 class Bonus(models.Model):
   article_id = models.ForeignKey('Article', null=True, on_delete=models.CASCADE)
   title = models.CharField(max_length=256, verbose_name='Название для бонуса')
-  text_bonus = HTMLField(verbose_name='Текст для бонуса')
-  image = models.ImageField(upload_to='uploads/bonus/', blank=True, verbose_name='Картинка для бонуса')
+  text_bonus = HTMLField(verbose_name='Текст для бонуса', default='bonus')
+  image = models.ImageField(upload_to='uploads/bonus/', blank=True, verbose_name='Картинка для бонуса')  
   pdf = models.FileField(upload_to='uploads/bonus', blank=True, verbose_name='ПДФка для бонуса')
   meditation = models.FileField(upload_to='uploads/meditation', blank=True, verbose_name='Медитация')
   instruction = models.FileField(

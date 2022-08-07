@@ -2,13 +2,13 @@ import React from 'react'
 import { Avatar, Grid, Box, Paper, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { TypeArticles } from 'redux/reducers/articles/types'
-import lock from '../../icons/lock.png'
+import lock from 'icons/lock.png'
 import 'components/tile/index.sass'
 
 const Tile: React.FC<TypeArticles> = ({ pk, title, label, is_blocked }) => ( // eslint-disable-line
   <Box key={pk}>
     <Link
-      to={`articles${pk}`}
+      to={`${pk}`}
       style={is_blocked ? { pointerEvents: 'none' } : undefined} // eslint-disable-line
     >
       <Paper
