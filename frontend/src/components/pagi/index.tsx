@@ -4,13 +4,22 @@ import { useTypedSelector } from 'redux/store'
 import { Pagination } from '@mui/material'
 
 const Pagi: React.FC = () => {
-  const { getArticles } = useActions()
-  const { count } = useTypedSelector((state) => ({
+  const { getArticles, setCurrentPage } = useActions()
+  const { count, currentPage } = useTypedSelector((state) => ({
     count: state.articlesReducer.count,
+    currentPage: state.commonReducer.currentPage,
   }))
+
+  const changePageHandler = (e: any, value: number) => {
+    console.log(e)
+    setCurrentPage(value)
+    getArticles(value)
+  }
+
   return (
     <Pagination
-      onChange={(e, value) => e && getArticles(value)}
+      page={currentPage}
+      onChange={changePageHandler}
       size="large"
       count={count / 5}
       variant="outlined"

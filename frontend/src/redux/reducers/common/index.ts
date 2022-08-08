@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   isBackButton: false,
+  currentPage: 1,
 }
 
 const commonReducer = (
@@ -17,6 +18,11 @@ const commonReducer = (
       return {
         ...state,
         isBackButton: action.payload,
+      }
+    case CommonActionEnum.SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
       }
     default:
       return state
