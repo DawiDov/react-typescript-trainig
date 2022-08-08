@@ -17,14 +17,15 @@ const Home: React.FC = () => {
   const isToken = authTokenHandler.checkToken()
   const { getArticles, setIsBackButton } = useActions()
 
+  const { articles, currentPage } = useTypedSelector((state) => ({
+    articles: state.articlesReducer.articles,
+    currentPage: state.commonReducer.currentPage,
+  }))
+
   useEffect(() => {
-    getArticles()
+    getArticles(currentPage)
     setIsBackButton(false)
   }, [])
-
-  const { articles } = useTypedSelector((state) => ({
-    articles: state.articlesReducer.articles,
-  }))
 
   if (!isToken) {
     return <Navigate to="/login" replace />
