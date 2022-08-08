@@ -22,6 +22,8 @@ class ArticleTextSerializer(ModelSerializer):
       "article_id",
       "title",
       "text",
+      "text_2",
+      "text_3",
       "image_1",
       "image_2",
       "image_3",
