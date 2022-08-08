@@ -4,9 +4,11 @@ export interface TypeArticleText {
   article_id: TypeArticles | null
   title: string
   text: string
+  text_2: string
+  text_3: string
   image_1: string | null
   image_2: string | null
-  imange_3: string | null
+  image_3: string | null
 }
 
 export interface TypeArticleTextState {
