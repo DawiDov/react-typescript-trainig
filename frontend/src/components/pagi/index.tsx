@@ -10,8 +10,10 @@ const Pagi: React.FC = () => {
     currentPage: state.commonReducer.currentPage,
   }))
 
-  const changePageHandler = (e: any, value: number) => {
-    console.log(e)
+  const changePageHandler = (
+    event: React.ChangeEvent<unknown>,
+    value: number,
+  ) => {
     setCurrentPage(value)
     getArticles(value)
   }

@@ -17,11 +17,11 @@ const Header = () => {
   const navigate = useNavigate()
   const { logout } = useActions()
   const userName = localStorage.getItem('username')
-  const exitHandler = (e: any) => {
+  const exitHandler = (e: React.ChangeEvent<unknown>) => {
     e.preventDefault()
     logout()
   }
-  const backHandler = (e: any) => {
+  const backHandler = (e: React.ChangeEvent<unknown>) => {
     e.preventDefault()
     navigate(-1)
   }
