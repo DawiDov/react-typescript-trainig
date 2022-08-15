@@ -1,7 +1,20 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
+class UserAccess(models.Model):
+  user = models.ForeignKey(User, 
+                           on_delete=models.CASCADE, 
+                           null=True, 
+                           verbose_name='Пользователь'
+                           )
+  articles = models.ManyToManyField('Article', verbose_name='список статей')
+
+  def __str__(self):
+    return str(self.user)
+  class Meta:
+    verbose_name = "Пользовательский доступ"
+    verbose_name_plural = 'Пользовательский доступ'
 
 class Article(models.Model):
   title = models.CharField(max_length=256, verbose_name='Название статьи')

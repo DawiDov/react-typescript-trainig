@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
-
-from .models import Article, ArticleText, Bonus, Extra
+from django.contrib.auth.models import User
+from .models import UserAccess, Article, ArticleText, Bonus, Extra
 
 
 class ArcticleSerializer(ModelSerializer):
@@ -12,6 +12,22 @@ class ArcticleSerializer(ModelSerializer):
       "label",
       "is_blocked",
     ]
+
+class CurrentUserSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["username"]
+
+class UserAccessSerializer(ModelSerializer):
+  articles = ArcticleSerializer(many=True)
+  user = CurrentUserSerializer(read_only=True)
+
+  class Meta:
+    model = UserAccess
+    fields = [
+      "user",
+      "articles",
+   ]
 
 class ArticleTextSerializer(ModelSerializer):
   article_id = ArcticleSerializer(read_only=True)
