@@ -24,7 +24,7 @@ class UserAccessSerializer(ModelSerializer):
 
   class Meta:
     model = UserAccess
-    fields = [
+    fields =[
       "user",
       "articles",
    ]

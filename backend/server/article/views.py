@@ -7,8 +7,12 @@ from .serializers import UserAccessSerializer, ArcticleSerializer, ArticleTextSe
 
 
 class UserAccessViewSet(ModelViewSet):
-    queryset = UserAccess.objects.all()
     serializer_class =UserAccessSerializer 
+    pagination_class = StandardResultsSetPagination
+    
+    def get_queryset(self):
+        user = self.request.user
+        return UserAccess.objects.filter(user=user)
 
 class ArticleViewSet(ModelViewSet):
     queryset = Article.objects.all().order_by("pk")
