@@ -1,23 +1,20 @@
-from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from .models import UserAccess, Article, ArticleText, Bonus, Extra
+from .models import UserAccess, ArticleText, Bonus, Extra
 from .pagination import StandardResultsSetPagination
-from .serializers import UserAccessSerializer, ArcticleSerializer, ArticleTextSerializer, BonusSerializer, ExtraSerializer
+from .serializers import UserAccessSerializer, ArticleTextSerializer, BonusSerializer, ExtraSerializer
 
 
 class UserAccessViewSet(ModelViewSet):
     serializer_class =UserAccessSerializer 
     pagination_class = StandardResultsSetPagination
     
-    def get_queryset(self):
-        user = self.request.user
-        return UserAccess.objects.filter(user=user)
 
-class ArticleViewSet(ModelViewSet):
-    queryset = Article.objects.all().order_by("pk")
-    serializer_class = ArcticleSerializer
-    pagination_class = StandardResultsSetPagination
+    def get_queryset(self):
+       user = self.request.user
+       return UserAccess.objects.filter(user=user)
+
+
 
 class ArticleTextViewSet(ModelViewSet):
     queryset = ArticleText.objects.all()

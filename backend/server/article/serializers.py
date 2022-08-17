@@ -28,6 +28,13 @@ class UserAccessSerializer(ModelSerializer):
       "user",
       "articles",
    ]
+    read_only_fields = ('created','updated')
+
+  def to_representation(self, instance):
+        response = super().to_representation(instance)
+        response["articles"].sort(key=lambda x: x["pk"])
+        return response
+
 
 class ArticleTextSerializer(ModelSerializer):
   article_id = ArcticleSerializer(read_only=True)
