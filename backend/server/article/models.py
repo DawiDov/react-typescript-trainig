@@ -27,6 +27,7 @@ class Article(models.Model):
     return f"№{str(self.pk)}: {str(self.title)}"
 
   class Meta:
+        ordering = ["pk"]
         verbose_name = "Статья курса"
         verbose_name_plural = "Статьи курса"
 
