@@ -16,9 +16,14 @@ class UserAccess(models.Model):
     verbose_name = "Пользовательский доступ"
     verbose_name_plural = 'Пользовательский доступ'
 
+
 class Article(models.Model):
   title = models.CharField(max_length=256, verbose_name='Название статьи')
-  label = models.ImageField(upload_to='uploads/labels', blank=True, verbose_name='Лого статьи')
+  label = models.ImageField(
+        upload_to='uploads/labels', 
+        blank=True, 
+        verbose_name='Лого статьи'
+    )
   is_blocked = models.BooleanField(default=True, verbose_name="Заблокированно?")
 
   def __str__(self):
@@ -38,9 +43,21 @@ class ArticleText(models.Model):
   text = HTMLField(verbose_name='Текст статьи 1', null=True, blank=True)
   text_2 = HTMLField(verbose_name='Текст статьи 2', null=True, blank=True)
   text_3 = HTMLField(verbose_name='Текст статьи 1', null=True, blank=True)
-  image_1 = models.ImageField(upload_to='uploads/articles', blank=True, verbose_name='Картинка для статьи 1')
-  image_2 = models.ImageField(upload_to='uploads/articles', blank=True, verbose_name='Картинка для статьи 2')
-  image_3 = models.ImageField(upload_to='uploads/articles', blank=True, verbose_name='Картинка для статьи 3')
+  image_1 = models.ImageField(
+        upload_to='uploads/articles', 
+        blank=True, 
+        verbose_name='Картинка для статьи 1'
+    )
+  image_2 = models.ImageField(
+        upload_to='uploads/articles', 
+        blank=True, 
+        verbose_name='Картинка для статьи 2'
+    )
+  image_3 = models.ImageField(
+        upload_to='uploads/articles', 
+        blank=True, 
+        verbose_name='Картинка для статьи 3'
+    )
 
   def __str__(self):
         return f"Основной контент: {str(self.article_id)}"
@@ -54,7 +71,11 @@ class Extra(models.Model):
   article_id = models.ForeignKey('Article', null=True, on_delete=models.CASCADE)
   title = models.CharField(max_length=256, verbose_name='Название екстра задания')
   text = HTMLField(verbose_name='Текст екстра задания')
-  image = models.ImageField(upload_to='uploads/extra', blank=True, verbose_name='Картинка для задания')
+  image = models.ImageField(
+        upload_to='uploads/extra', 
+        blank=True, 
+        verbose_name='Картинка для задания'
+    )
 
   def __str__(self):
         return f"Extra задание: {str(self.article_id)}"
@@ -68,9 +89,21 @@ class Bonus(models.Model):
   article_id = models.ForeignKey('Article', null=True, on_delete=models.CASCADE)
   title = models.CharField(max_length=256, verbose_name='Название для бонуса')
   text_bonus = HTMLField(verbose_name='Текст для бонуса', default='bonus')
-  image = models.ImageField(upload_to='uploads/bonus/', blank=True, verbose_name='Картинка для бонуса')  
-  pdf = models.FileField(upload_to='uploads/bonus', blank=True, verbose_name='ПДФка для бонуса')
-  meditation = models.FileField(upload_to='uploads/meditation', blank=True, verbose_name='Медитация')
+  image = models.ImageField(
+        upload_to='uploads/bonus/', 
+        blank=True, 
+        verbose_name='Картинка для бонуса'
+    )  
+  pdf = models.FileField(
+        upload_to='uploads/bonus', 
+        blank=True, 
+        verbose_name='ПДФка для бонуса'
+    )
+  meditation = models.FileField(
+        upload_to='uploads/meditation', 
+        blank=True, 
+        verbose_name='Медитация'
+    )
   instruction = models.FileField(
     blank=True,
     default='uploads/meditation/как_правильно_медитировать.pdf',
