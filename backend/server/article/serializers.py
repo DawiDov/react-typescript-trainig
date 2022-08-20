@@ -19,7 +19,7 @@ class CurrentUserSerializer(ModelSerializer):
         fields = ["username"]
 
 class UserAccessSerializer(ModelSerializer):
-  articles = ArcticleSerializer(many=True)
+  articles = ArcticleSerializer(many=True, read_only=True)
   user = CurrentUserSerializer(read_only=True)
 
   class Meta:
@@ -30,10 +30,12 @@ class UserAccessSerializer(ModelSerializer):
    ]
     read_only_fields = ('created','updated')
 
-  def to_representation(self, instance):
-        response = super().to_representation(instance)
-        response["articles"].sort(key=lambda x: x["pk"])
-        return response
+  def create(self, validated_data):
+        articles_data = validated_data.pop('articles')
+        userAccess = UserAccess.objects.create(**validated_data)
+        for article_data in articles_data:
+            Article.objects.create(userAccess=userAccess, **article_data)
+        return  userAccess
 
 
 class ArticleTextSerializer(ModelSerializer):

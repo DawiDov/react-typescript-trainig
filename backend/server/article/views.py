@@ -1,8 +1,13 @@
 from rest_framework.viewsets import ModelViewSet
-
-from .models import UserAccess, ArticleText, Bonus, Extra
+from rest_framework.decorators import action
+from .models import Article, UserAccess, ArticleText, Bonus, Extra
 from .pagination import StandardResultsSetPagination
-from .serializers import UserAccessSerializer, ArticleTextSerializer, BonusSerializer, ExtraSerializer
+from .serializers import ( 
+    UserAccessSerializer, 
+    ArticleTextSerializer, 
+    BonusSerializer, 
+    ExtraSerializer,
+)
 
 
 class UserAccessViewSet(ModelViewSet):
@@ -15,14 +20,15 @@ class UserAccessViewSet(ModelViewSet):
        return UserAccess.objects.filter(user=user)
 
 
-
 class ArticleTextViewSet(ModelViewSet):
     queryset = ArticleText.objects.all()
     serializer_class = ArticleTextSerializer
 
+    
 class ExtraViewSet(ModelViewSet):
     queryset = Extra.objects.all()
     serializer_class = ExtraSerializer
+
 
 class BonusViewSet(ModelViewSet):
     queryset = Bonus.objects.all()
