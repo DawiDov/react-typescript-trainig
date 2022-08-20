@@ -19,6 +19,23 @@ class UserAccessViewSet(ModelViewSet):
        user = self.request.user
        return UserAccess.objects.filter(user=user)
 
+    @action(
+        methods=["POST"],
+        detail=True,
+        url_name="access",
+        url_path="access",
+    )
+    def get_access(self, request, pk=None):
+        user=request.user
+        is_blocked=request.data['is_blocked']
+        article=Article.objects.get(pk=pk)
+        access =UserAccess.objects.filter(articles=article).update(is_blocked=is_blocked)
+        print('OLOLOLOLOLO')
+        print(access)
+        print('OLOLOLOLOLO')
+        return access
+        
+
 
 class ArticleTextViewSet(ModelViewSet):
     queryset = ArticleText.objects.all()
