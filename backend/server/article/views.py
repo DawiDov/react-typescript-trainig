@@ -6,6 +6,7 @@ from .change_access import change_access
 from .models import Article, UserAccess, ArticleText, Bonus, Extra
 from .pagination import StandardResultsSetPagination
 from .serializers import ( 
+    ArcticleSerializer,
     UserAccessSerializer, 
     ArticleTextSerializer, 
     BonusSerializer, 
@@ -39,6 +40,11 @@ class UserAccessViewSet(ModelViewSet):
             return Response(status=HTTP_400_BAD_REQUEST)
         
 
+class ArticleViewSet(ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArcticleSerializer 
+    pagination_class = StandardResultsSetPagination
+    
 
 class ArticleTextViewSet(ModelViewSet):
     queryset = ArticleText.objects.all()
