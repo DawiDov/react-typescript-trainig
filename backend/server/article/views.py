@@ -33,7 +33,6 @@ class UserAccessViewSet(ModelViewSet):
         user=request.user
         is_blocked=request.data['is_blocked']
         access = change_access(int(pk), user, is_blocked)
-        print(access)
         if access == True:
             return Response(status=HTTP_200_OK)
         if access == False:
