@@ -1,5 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
+from .change_access import change_access
 from .models import Article, UserAccess, ArticleText, Bonus, Extra
 from .pagination import StandardResultsSetPagination
 from .serializers import ( 
@@ -28,12 +31,12 @@ class UserAccessViewSet(ModelViewSet):
     def get_access(self, request, pk=None):
         user=request.user
         is_blocked=request.data['is_blocked']
-        article=Article.objects.get(pk=pk)
-        access =UserAccess.objects.filter(articles=article).update(is_blocked=is_blocked)
-        print('OLOLOLOLOLO')
+        access = change_access(int(pk), user, is_blocked)
         print(access)
-        print('OLOLOLOLOLO')
-        return access
+        if access == True:
+            return Response(status=HTTP_200_OK)
+        if access == False:
+            return Response(status=HTTP_400_BAD_REQUEST)
         
 
 
