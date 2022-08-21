@@ -4,18 +4,24 @@ export interface TypeArticles {
   label: string
   is_blocked: boolean
 }
+type User = {
+  username: string
+}
+export interface TypeArticleAccess {
+  [article: string]: boolean | string | User
+}
 
 export interface TypeArticlesState {
   count: number
   articles: Array<TypeArticles> | null
+  articleAccess: TypeArticleAccess | null
 }
 
 /* eslint-disable */
 export enum ArticlesActionEnum {
   SET_ARTICLES = 'SET-ARTICLES',
+  SET_ARTICLE_ACCESS = 'SET_ARTICLE_ACCESS',
   SET_COUNT = 'SET-COUNT',
-  SET_NEXT = 'SET-NEXT',
-  SET_PREVIOUS = 'SET-PREVIOUS',
 }
 /* eslint-enable */
 
@@ -29,4 +35,12 @@ export interface SetCountAction {
   payload: number
 }
 
-export type AtrticlesActions = SetArticlesAction | SetCountAction
+export interface SetArticleAccessAction {
+  type: ArticlesActionEnum.SET_ARTICLE_ACCESS
+  payload: TypeArticleAccess
+}
+
+export type AtrticlesActions =
+  | SetArticlesAction
+  | SetCountAction
+  | SetArticleAccessAction
