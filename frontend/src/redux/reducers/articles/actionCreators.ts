@@ -3,7 +3,9 @@ import {
   ArticlesActionEnum,
   SetArticlesAction,
   SetCountAction,
+  SetArticleAccessAction,
   TypeArticles,
+  TypeArticleAccess,
 } from 'redux/reducers/articles/types'
 import { AppDispatch } from 'redux/store'
 
@@ -11,6 +13,12 @@ const articlesActionCreators = {
   setArticles: (articles: Array<TypeArticles>): SetArticlesAction => ({
     type: ArticlesActionEnum.SET_ARTICLES,
     payload: articles,
+  }),
+  setArticleAccess: (
+    articleAccess: TypeArticleAccess,
+  ): SetArticleAccessAction => ({
+    type: ArticlesActionEnum.SET_ARTICLE_ACCESS,
+    payload: articleAccess,
   }),
   setCount: (count: number): SetCountAction => ({
     type: ArticlesActionEnum.SET_COUNT,
@@ -21,15 +29,32 @@ const articlesActionCreators = {
     const url: string = `http://localhost/api/articles/?page=${page}`
 
     const requestHeaders = {
-          'Authorization': `Token ${token}`, // eslint-disable-line
+      'Authorization': `Token ${token}`, // eslint-disable-line
       'Content-Type': 'application/json',
     }
+
     try {
       const resp = await axios.get(url, { headers: requestHeaders })
       dispatch(articlesActionCreators.setCount(resp.data.count))
       dispatch(articlesActionCreators.setArticles(resp.data.results))
     } catch (e) {
-          console.log(e) // eslint-disable-line
+      console.log(e) // eslint-disable-line
+    }
+  },
+  getArticleAccess: () => async (dispatch: AppDispatch) => {
+    const token: string | null = localStorage.getItem('token')
+    const url: string = 'http://localhost/api/user-access'
+
+    const requestHeaders = {
+      'Authorization': `Token ${token}`, // eslint-disable-line
+      'Content-Type': 'application/json',
+    }
+
+    try {
+      const resp = await axios.get(url, { headers: requestHeaders })
+      dispatch(articlesActionCreators.setArticleAccess(resp.data.results[0]))
+    } catch (e) {
+      console.log(e) // eslint-disable-line
     }
   },
 }

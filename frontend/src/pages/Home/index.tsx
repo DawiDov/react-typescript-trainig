@@ -15,7 +15,7 @@ import authTokenHandler from 'redux/reducers/auth/authStorage'
 
 const Home: React.FC = () => {
   const isToken = authTokenHandler.checkToken()
-  const { getArticles, setIsBackButton } = useActions()
+  const { getArticles, setIsBackButton, getArticleAccess } = useActions()
 
   const { articles, currentPage } = useTypedSelector((state) => ({
     articles: state.articlesReducer.articles,
@@ -24,6 +24,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     getArticles(currentPage)
+    getArticleAccess()
     setIsBackButton(false)
   }, [])
 

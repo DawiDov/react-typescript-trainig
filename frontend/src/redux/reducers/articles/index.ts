@@ -7,6 +7,7 @@ import {
 const initialState = {
   count: 0,
   articles: null,
+  articleAccess: null,
 }
 
 const articlesReducer = (
@@ -23,6 +24,11 @@ const articlesReducer = (
       return {
         ...state,
         articles: action.payload,
+      }
+    case ArticlesActionEnum.SET_ARTICLE_ACCESS:
+      return {
+        ...state,
+        articleAccess: action.payload,
       }
     default:
       return state
