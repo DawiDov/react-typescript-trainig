@@ -60,6 +60,7 @@ class ArticleText(models.Model):
   text = HTMLField(verbose_name='Текст статьи 1', null=True, blank=True)
   text_2 = HTMLField(verbose_name='Текст статьи 2', null=True, blank=True)
   text_3 = HTMLField(verbose_name='Текст статьи 1', null=True, blank=True)
+  extra_task = models.IntegerField(verbose_name='Екстра Задание', null=True, blank=True)
   image_1 = models.ImageField(
         upload_to='uploads/articles', 
         blank=True, 
@@ -82,24 +83,6 @@ class ArticleText(models.Model):
   class Meta:
         verbose_name = "Основной текст статьи"
         verbose_name_plural = "Текст для статей курса"
-
-
-class Extra(models.Model):
-  article_id = models.ForeignKey('Article', null=True, on_delete=models.CASCADE)
-  title = models.CharField(max_length=256, verbose_name='Название екстра задания')
-  text = HTMLField(verbose_name='Текст екстра задания')
-  image = models.ImageField(
-        upload_to='uploads/extra', 
-        blank=True, 
-        verbose_name='Картинка для задания'
-    )
-
-  def __str__(self):
-        return f"Extra задание: {str(self.article_id)}"
-
-  class Meta:
-    verbose_name = "Екстра задание"
-    verbose_name_plural = "Екстра задания"
 
 
 class Bonus(models.Model):

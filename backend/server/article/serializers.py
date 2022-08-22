@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from django.contrib.auth.models import User
-from .models import UserAccess, Article, ArticleText, Bonus, Extra
+from .models import UserAccess, Article, ArticleText, Bonus
 
 
 class ArcticleSerializer(ModelSerializer):
@@ -36,21 +36,10 @@ class ArticleTextSerializer(ModelSerializer):
       "text",
       "text_2",
       "text_3",
+      "extra_task",
       "image_1",
       "image_2",
       "image_3",
-    ]
-
-class ExtraSerializer(ModelSerializer):
-  article_id = ArcticleSerializer(read_only=True)
-
-  class Meta:
-    model = Extra
-    fields = [
-      "article_id",
-      "title",
-      "text",
-      "image",
     ]
 
 class BonusSerializer(ModelSerializer):

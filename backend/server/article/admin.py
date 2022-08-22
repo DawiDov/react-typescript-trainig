@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from article.models import UserAccess, Article, ArticleText, Bonus, Extra
+from article.models import UserAccess, Article, ArticleText, Bonus
 
 
 # Register your models here.
@@ -14,10 +14,6 @@ class AdminArticle(admin.ModelAdmin):
 
 @admin.register(ArticleText)
 class AdminArticleText(admin.ModelAdmin):
-   pass
-
-@admin.register(Extra)
-class AdminExtra(admin.ModelAdmin):
    pass
   
 @admin.register(Bonus)

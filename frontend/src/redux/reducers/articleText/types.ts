@@ -6,6 +6,7 @@ export interface TypeArticleText {
   text: string
   text_2: string
   text_3: string
+  extra_task: number
   image_1: string | null
   image_2: string | null
   image_3: string | null
