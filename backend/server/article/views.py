@@ -3,14 +3,13 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from .change_access import change_access
-from .models import Article, UserAccess, ArticleText, Bonus, Extra
+from .models import Article, UserAccess, ArticleText, Bonus
 from .pagination import StandardResultsSetPagination
 from .serializers import ( 
     ArcticleSerializer,
     UserAccessSerializer, 
     ArticleTextSerializer, 
     BonusSerializer, 
-    ExtraSerializer,
 )
 
 
@@ -48,11 +47,6 @@ class ArticleViewSet(ModelViewSet):
 class ArticleTextViewSet(ModelViewSet):
     queryset = ArticleText.objects.all()
     serializer_class = ArticleTextSerializer
-
-    
-class ExtraViewSet(ModelViewSet):
-    queryset = Extra.objects.all()
-    serializer_class = ExtraSerializer
 
 
 class BonusViewSet(ModelViewSet):
