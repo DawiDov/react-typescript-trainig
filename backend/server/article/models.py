@@ -8,7 +8,7 @@ class UserAccess(models.Model):
                            null=True, 
                            verbose_name='Пользователь'
                            )
-  article_1 = models.BooleanField(default=True, verbose_name="Статья 1: Заблокированно?")
+  article_1 = models.BooleanField(default=False, verbose_name="Статья 1: Заблокированно?")
   article_2 = models.BooleanField(default=True, verbose_name="Статья 2: Заблокированно?")
   article_3 = models.BooleanField(default=True, verbose_name="Статья 3: Заблокированно?")
   article_4 = models.BooleanField(default=True, verbose_name="Статья 4: Заблокированно?")

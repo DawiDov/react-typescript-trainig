@@ -6,11 +6,7 @@ import setInnerHTML from 'utils/SetInnerHTML'
 const ArticleText: React.FC = () => {
   const { articleText } = useTypedSelector((state) => state.articleTextReducer)
   return (
-    <Box
-      component="div"
-      sx={{
-        padding: '30px 5px 30px 15px',
-      }}>
+    <Box component="div">
       <Typography
         align="center"
         variant="h6"

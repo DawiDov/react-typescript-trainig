@@ -24,7 +24,7 @@ const ArticlePage: React.FC = () => {
   return (
     <Container
       sx={{
-        padding: '0 0 30px 0',
+        padding: '30px 10px 30px 20px',
       }}>
       <ArticleText />
       {articleText?.article_id && (
