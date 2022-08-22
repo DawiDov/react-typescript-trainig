@@ -49,7 +49,6 @@ def change_access(pk, user, is_blocked):
             return True
         except:
             return False
-            
     if pk==9:
         try:
             UserAccess.objects.filter(user=user).update(article_9=is_blocked)
@@ -62,7 +61,7 @@ def change_access(pk, user, is_blocked):
             return True
         except:
             return False
-    if pk==11:
+    elif pk==11:
         try:
             UserAccess.objects.filter(user=user).update(article_11=is_blocked)
             return True

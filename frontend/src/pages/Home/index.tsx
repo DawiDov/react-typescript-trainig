@@ -17,13 +17,13 @@ const Home: React.FC = () => {
   const isToken = authTokenHandler.checkToken()
   const { getArticles, setIsBackButton, getArticleAccess } = useActions()
 
-  const { articles, currentPage } = useTypedSelector((state) => ({
+  const { articles } = useTypedSelector((state) => ({
     articles: state.articlesReducer.articles,
-    currentPage: state.commonReducer.currentPage,
   }))
+  const currentPage: string | null = localStorage.getItem('currentPage')
 
   useEffect(() => {
-    getArticles(currentPage)
+    getArticles(+currentPage!)
     getArticleAccess()
     setIsBackButton(false)
   }, [])
