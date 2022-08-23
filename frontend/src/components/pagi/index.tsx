@@ -13,10 +13,10 @@ const Pagi: React.FC = () => {
     event: React.ChangeEvent<unknown>,
     value: number,
   ) => {
-    localStorage.setItem('currentPage', value.toString())
+    sessionStorage.setItem('currentPage', value.toString())
     getArticles(value)
   }
-  const currentPage: string | null = localStorage.getItem('currentPage')
+  const currentPage: string | null = sessionStorage.getItem('currentPage')
   return (
     <Pagination
       page={+currentPage!}
