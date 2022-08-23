@@ -20,7 +20,8 @@ const Home: React.FC = () => {
   const { articles } = useTypedSelector((state) => ({
     articles: state.articlesReducer.articles,
   }))
-  const currentPage: string | null = localStorage.getItem('currentPage')
+  let currentPage: string | null = sessionStorage.getItem('currentPage')
+  currentPage = currentPage == null ? '1' : currentPage
 
   useEffect(() => {
     getArticles(+currentPage!)
