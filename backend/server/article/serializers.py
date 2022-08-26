@@ -43,16 +43,13 @@ class ArticleTextSerializer(ModelSerializer):
     ]
 
 class BonusSerializer(ModelSerializer):
-  article_id = ArcticleSerializer(read_only=True)
 
   class Meta:
     model = Bonus
     fields = [
-      "article_id",
+      "related_id",
       "title",
       "text_bonus",
-      "image",
       "pdf",
       "meditation",
-      "instruction",
     ]

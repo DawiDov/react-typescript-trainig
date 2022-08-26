@@ -50,5 +50,9 @@ class ArticleTextViewSet(ModelViewSet):
 
 
 class BonusViewSet(ModelViewSet):
-    queryset = Bonus.objects.all()
     serializer_class = BonusSerializer
+    
+    def get_queryset(self):
+        id = self.request.query_params.get('id')
+        return Bonus.objects.filter(related_id=id)
+
