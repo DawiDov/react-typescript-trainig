@@ -15,6 +15,7 @@ const AccessButton: React.FC<Pick<TypeArticles, 'pk'>> = ({ pk }) => { // eslint
     <Box
       key={pk}
       sx={{
+        margin: '80px 0 0 0',
         display: 'flex',
         justifyContent: 'center',
       }}>

@@ -86,16 +86,11 @@ class ArticleText(models.Model):
 
 
 class Bonus(models.Model):
-  article_id = models.ForeignKey('Article', null=True, on_delete=models.CASCADE)
+  related_id = models.IntegerField('Относительный ID', null=True, blank=True)
   title = models.CharField(max_length=256, verbose_name='Название для бонуса')
   text_bonus = HTMLField(verbose_name='Текст для бонуса', default='bonus')
-  image = models.ImageField(
-        upload_to='uploads/bonus/', 
-        blank=True, 
-        verbose_name='Картинка для бонуса'
-    )  
-  pdf = models.FileField(
-        upload_to='uploads/bonus', 
+  pdf = models.CharField(
+        max_length=256,
         blank=True, 
         verbose_name='ПДФка для бонуса'
     )
@@ -104,15 +99,9 @@ class Bonus(models.Model):
         blank=True, 
         verbose_name='Медитация'
     )
-  instruction = models.FileField(
-    blank=True,
-    default='uploads/meditation/как_правильно_медитировать.pdf',
-    upload_to='uploads/meditation',
-    verbose_name='Инструкция к медитации',
-    )
 
   def __str__(self):
-        return f"{str(self.title)}: {str(self.article_id)}"
+        return f"{str(self.title)}: {str(self.related_id)}"
 
   class Meta:
     verbose_name = "Бонус задание"
