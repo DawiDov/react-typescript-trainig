@@ -50,6 +50,7 @@ const Header = () => {
                 <Typography
                   sx={{
                     fontSize: '20px',
+                    fontWeight: '500',
                   }}>
                   {`${userName}: `}
                 </Typography>
@@ -60,7 +61,12 @@ const Header = () => {
                 <Button onClick={exitHandler} color="inherit">
                   <Typography
                     sx={{
-                      fontSize: '15px',
+                      width: '52px',
+                      height: '52px',
+                      borderRadius: '35px',
+                      border: '2px solid white',
+                      fontSize: '12px',
+                      padding: '15px 0 0 0',
                       textDecoration: 'underline',
                     }}>
                     выход
@@ -70,6 +76,12 @@ const Header = () => {
                 <Button onClick={backHandler} color="inherit">
                   <Typography
                     sx={{
+                      width: '52px',
+                      height: '52px',
+                      borderRadius: '35px',
+                      border: '2px solid white',
+                      fontSize: '12px',
+                      padding: '15px 0 0 0',
                       textDecoration: 'underline',
                     }}>
                     назад
