@@ -11,7 +11,7 @@ const AccessButton: React.FC<Pick<TypeArticles, 'pk'>> = ({ pk }) => { // eslint
   const { updateArtileAccess } = useActions()
 
   const accessHandler = () => {
-    article && updateArtileAccess(pk + 1, false) // eslint-disable-line
+    pk === 20 || article && updateArtileAccess(pk + 1, false) // eslint-disable-line
   }
 
   return (
