@@ -11,7 +11,7 @@ const Login: FC = () => {
   const { isAuth } = useTypedSelector((state) => state.authReducer)
   const isToken = authTokenHandler.checkToken()
   if (isToken) {
-    isAuth || alert('Добро пожаловать !') // eslint-disable-line
+    isAuth && alert('Добро пожаловать !') // eslint-disable-line
     return <Navigate to="/articles" replace />
   }
   return (

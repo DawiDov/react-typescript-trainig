@@ -37,6 +37,17 @@ class UserAccessViewSet(ModelViewSet):
         if access == False:
             return Response(status=HTTP_400_BAD_REQUEST)
         
+    @action(
+        methods=["POST"],
+        detail=False,
+        url_name="inst-access",
+        url_path="inst-access",
+    )
+    def get_inst_access(self, request):
+        user=request.user
+        instHandle=request.data['instHandle']
+        UserAccess.objects.filter(user=user).update(instruction=instHandle)
+        return Response(status=HTTP_200_OK)
 
 class ArticleViewSet(ModelViewSet):
     queryset = Article.objects.all()
