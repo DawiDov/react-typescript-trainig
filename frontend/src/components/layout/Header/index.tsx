@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
 import useActions from 'hooks/useActions'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useTypedSelector } from 'redux/store'
 import './index.sass'
 
@@ -43,7 +43,14 @@ const Header = () => {
                 flexGrow: 1,
                 fontSize: '11px',
               }}>
-              Мастерская Желаний
+              <Link
+                style={{
+                  color: 'white',
+                  fontSize: '20px',
+                }}
+                to="/instruction">
+                инструкция
+              </Link>
             </Typography>
             <Box>
               {!isBackButton ? (
@@ -66,8 +73,7 @@ const Header = () => {
                       borderRadius: '35px',
                       border: '2px solid white',
                       fontSize: '12px',
-                      padding: '15px 0 0 0',
-                      textDecoration: 'underline',
+                      padding: '16px 0 0 0',
                     }}>
                     выход
                   </Typography>

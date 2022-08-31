@@ -2,7 +2,6 @@ export interface TypeArticles {
   pk: number
   title: string
   label: string
-  is_blocked: boolean
 }
 type User = {
   username: string

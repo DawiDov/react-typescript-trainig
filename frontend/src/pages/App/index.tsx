@@ -3,11 +3,13 @@ import { Route, Routes } from 'react-router-dom'
 import Home from 'pages/Home'
 import Login from 'pages/Login'
 import Layout from 'components/layout/Layout'
-import ArticlePage from 'pages/articlePage'
+import ArticlePage from 'pages/ArticlePage'
+import Instruction from 'pages/Instruction'
 
 const App = () => (
   <Routes>
     <Route path="/" element={<Layout />}>
+      <Route path="instruction" element={<Instruction />} />
       <Route path="articles" element={<Home />} />
       <Route path="articles/:id" element={<ArticlePage />} />
     </Route>

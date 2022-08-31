@@ -17,8 +17,9 @@ const Home: React.FC = () => {
   const isToken = authTokenHandler.checkToken()
   const { getArticles, setIsBackButton, getArticleAccess } = useActions()
 
-  const { articles } = useTypedSelector((state) => ({
+  const { articles, instruction } = useTypedSelector((state) => ({
     articles: state.articlesReducer.articles,
+    instruction: state.articlesReducer.articleAccess?.instruction,
   }))
   let currentPage: string | null = sessionStorage.getItem('currentPage')
   currentPage = currentPage == null ? '1' : currentPage
@@ -31,6 +32,9 @@ const Home: React.FC = () => {
 
   if (!isToken) {
     return <Navigate to="/login" replace />
+  }
+  if (instruction) {
+    return <Navigate to="/instruction" replace />
   }
   return (
     <Container

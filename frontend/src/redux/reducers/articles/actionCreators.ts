@@ -77,6 +77,26 @@ const articlesActionCreators = {
       console.log(e) // eslint-disable-line
     }
   },
+  updateInstructionAccess: async (instHandle: boolean) => {
+    const token: string | null = localStorage.getItem('token')
+    const url: string = 'http://localhost/api/user-access/inst-access/'
+
+    const requestHeaders = {
+      'Authorization': `Token ${token}`, // eslint-disable-line
+      'Content-Type': 'application/json',
+    }
+    const data = {
+      instHandle,
+    }
+
+    try {
+      await axios.post(url, data, {
+        headers: requestHeaders,
+      })
+    } catch (e) {
+      console.log(e) // eslint-disable-line
+    }
+  },
 }
 
 export default articlesActionCreators
