@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { Navigate } from 'react-router-dom'
 import { Typography, Box, Divider } from '@mui/material'
+
+import useActions from 'hooks/useActions'
 
 import InstUpdateAccessButton from 'pages/Instruction/button'
 import authTokenHandler from 'redux/reducers/auth/authStorage'
 import StarList from 'components/starList'
 
 const Instruction: React.FC = () => {
+  const { setIsBackButton } = useActions()
+
+  useEffect(() => {
+    setIsBackButton(true)
+  }, [])
+
   const isToken = authTokenHandler.checkToken()
+
   if (!isToken) {
     return <Navigate to="/login" replace />
   }
