@@ -1,30 +1,21 @@
 import React from 'react'
 import { Box, Paper, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
-import { TypeArticles } from 'redux/reducers/articles/types'
-import useActions from 'hooks/useActions'
-import useAccess from 'hooks/useAccess'
 import 'components/tile/index.sass'
 
-const AccessButton: React.FC<Pick<TypeArticles, 'pk'>> = ({ pk }) => { // eslint-disable-line
-  const article = useAccess(pk + 1)
-  const { updateArtileAccess } = useActions()
-
+const CommonMenuButton: React.FC = () => {
   const accessHandler = () => {
-    article && updateArtileAccess(pk + 1, false) // eslint-disable-line
+    sessionStorage.setItem('currentPage', '1')
   }
 
   return (
     <Box
-      key={pk}
       sx={{
         margin: '80px 0 0 0',
         display: 'flex',
         justifyContent: 'center',
       }}>
-      <Link
-        to={pk === 20 ? '/conclusion' : '/articles'}
-        onClick={accessHandler}>
+      <Link to="/articles" onClick={accessHandler}>
         <Paper
           className="tile"
           elevation={5}
@@ -42,10 +33,10 @@ const AccessButton: React.FC<Pick<TypeArticles, 'pk'>> = ({ pk }) => { // eslint
             sx={{
               textAlign: 'center',
               wordWrap: 'break-word',
-              fontSize: '22px',
+              fontSize: '20px',
               fontFamily: 'Jost, sans-serif',
             }}>
-            {pk === 20 ? 'Заключение' : 'Продолжить'}
+            Главное Меню
           </Typography>
         </Paper>
       </Link>
@@ -53,4 +44,4 @@ const AccessButton: React.FC<Pick<TypeArticles, 'pk'>> = ({ pk }) => { // eslint
   )
 }
 
-export default AccessButton
+export default CommonMenuButton
