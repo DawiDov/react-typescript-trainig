@@ -15,7 +15,7 @@ const bonusActionCreators = {
   }),
   getBonusContent: (id: number) => async (dispatch: AppDispatch) => {
     const token: string | null = authTokenHandler.getToken()
-    const url: string = `http://localhost/api/bonus?id=${id}`
+    const url: string = `https://masterskaya-courses.ru/api/bonus?id=${id}`
 
     const requestHeaders = {
       'Authorization': `Token ${token}`, // eslint-disable-line

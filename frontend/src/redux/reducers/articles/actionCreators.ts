@@ -26,7 +26,7 @@ const articlesActionCreators = {
   }),
   getArticles: (page: number) => async (dispatch: AppDispatch) => {
     const token: string | null = localStorage.getItem('token')
-    const url: string = `http://localhost/api/articles/?page=${page}`
+    const url: string = `https://masterskaya-courses.ru/api/articles/?page=${page}`
 
     const requestHeaders = {
       'Authorization': `Token ${token}`, // eslint-disable-line
@@ -43,7 +43,7 @@ const articlesActionCreators = {
   },
   getArticleAccess: () => async (dispatch: AppDispatch) => {
     const token: string | null = localStorage.getItem('token')
-    const url: string = 'http://localhost/api/user-access'
+    const url: string = 'https://masterskaya-courses.ru/api/user-access'
 
     const requestHeaders = {
       'Authorization': `Token ${token}`, // eslint-disable-line
@@ -59,7 +59,7 @@ const articlesActionCreators = {
   },
   updateArtileAccess: async (pk: number, isBlocked: boolean) => {
     const token: string | null = localStorage.getItem('token')
-    const url: string = `http://localhost/api/user-access/${pk}/access/`
+    const url: string = `https://masterskaya-courses.ru/api/user-access/${pk}/access/`
 
     const requestHeaders = {
       'Authorization': `Token ${token}`, // eslint-disable-line
@@ -79,7 +79,7 @@ const articlesActionCreators = {
   },
   updateInstructionAccess: async (instHandle: boolean) => {
     const token: string | null = localStorage.getItem('token')
-    const url: string = 'http://localhost/api/user-access/inst-access/'
+    const url: string = 'https://masterskaya-courses.ru/api/user-access/inst-access/'
 
     const requestHeaders = {
       'Authorization': `Token ${token}`, // eslint-disable-line
