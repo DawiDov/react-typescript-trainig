@@ -32,8 +32,8 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "localhost",
     "backend",
-    "example_domain.test",
-    "www.example_domain.test",
+    "masterskaya-courses.ru",
+    "www.masterskaya-courses.ru",
 ]
 
 
