@@ -9,7 +9,7 @@ import BonusContent from 'components/bonusContent'
 import AccessButton from 'components/accessButton'
 import { useTypedSelector } from 'redux/store'
 
-const BasePage: React.FC = () => {
+const ArticlePage: React.FC = () => {
   const { articleText } = useTypedSelector((state) => state.articleTextReducer)
   const location = useArticleID()
   const { setIsBackButton, getArticleText, getBonusContent } = useActions()
@@ -37,4 +37,4 @@ const BasePage: React.FC = () => {
   )
 }
 
-export default BasePage
+export default ArticlePage
