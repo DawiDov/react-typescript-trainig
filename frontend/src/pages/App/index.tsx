@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Home from 'pages/Home'
 import Login from 'pages/Login'
 import Layout from 'components/layout/Layout'
-import ArticlePage from 'pages/ArticlePage'
+import BasePage from 'pages/BasePage'
 import Instruction from 'pages/Instruction'
 import Conclusion from 'pages/Conclusion'
 
@@ -13,7 +13,7 @@ const App = () => (
       <Route path="instruction" element={<Instruction />} />
       <Route path="conclusion" element={<Conclusion />} />
       <Route path="articles" element={<Home />} />
-      <Route path="articles/:id" element={<ArticlePage />} />
+      <Route path="articles/:id" element={<BasePage />} />
     </Route>
     <Route path="login" element={<Login />} />
   </Routes>
