@@ -79,7 +79,8 @@ const articlesActionCreators = {
   },
   updateInstructionAccess: async (instHandle: boolean) => {
     const token: string | null = localStorage.getItem('token')
-    const url: string = 'https://masterskaya-courses.ru/api/user-access/inst-access/'
+    const url: string =
+      'https://masterskaya-courses.ru/api/user-access/inst-access/'
 
     const requestHeaders = {
       'Authorization': `Token ${token}`, // eslint-disable-line
