@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'utils/axios'
+
 import {
   ArticleTextActionEnum,
   SetArticlesTextAction,
@@ -15,7 +16,7 @@ const articleTextActionCreators = {
   }),
   getArticleText: (id: number) => async (dispatch: AppDispatch) => {
     const token: string | null = authTokenHandler.getToken()
-    const url: string = `https://masterskaya-courses.ru/api/article-text/${id}`
+    const url: string = `api/article-text/${id}`
     const requestHeaders = {
       'Authorization': `Token ${token}`, // eslint-disable-line
       'Content-Type': 'application/json',

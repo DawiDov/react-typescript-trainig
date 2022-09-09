@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from 'utils/axios'
+
 import {
   AuthActionEnum,
   SetAuthAction,
@@ -22,7 +23,7 @@ const authActionCreators = {
   }),
   login:
     (username: string, password: string) => async (dispatch: AppDispatch) => {
-      const url: string = 'https://masterskaya-courses.ru/api-token-auth/'
+      const url: string = 'api-token-auth/'
       try {
         dispatch(authActionCreators.setIsLoading(true))
         const resp = await axios.post(url, { username, password })
