@@ -6,7 +6,6 @@ __pycache__/
 static
 .DS_Store
 db.sqlite3
-mediafiles
 
 # C extensions
 *.so
