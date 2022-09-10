@@ -73,7 +73,7 @@ const StarList: React.FC = () => {
       flexDirection: 'column',
     }}>
       <Typography align='center' variant='h5'>
-        Ваш путь по курсу !
+        {!article_20 ? 'Вы прошли курс !' : 'Ваш путь по курсу !'}
       </Typography>
       <Box sx={{
         display: 'flex',
