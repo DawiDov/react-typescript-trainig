@@ -11,8 +11,9 @@ import { useTypedSelector } from 'redux/store'
 import './index.sass'
 
 const Header = () => {
-  const { isBackButton } = useTypedSelector((state) => ({
+  const { isBackButton, instruction } = useTypedSelector((state) => ({
     isBackButton: state.commonReducer.isBackButton,
+    instruction: state.articlesReducer.articleAccess?.instruction,
   }))
   const navigate = useNavigate()
   const { logout } = useActions()
@@ -64,36 +65,38 @@ const Header = () => {
               ) : null}
             </Box>
             <Box>
-              {!isBackButton ? (
-                <Button onClick={exitHandler} color="inherit">
-                  <Typography
-                    sx={{
-                      width: '52px',
-                      height: '52px',
-                      borderRadius: '35px',
-                      border: '2px solid white',
-                      fontSize: '12px',
-                      padding: '16px 0 0 0',
-                    }}>
-                    выход
-                  </Typography>
-                </Button>
-              ) : (
-                <Button onClick={backHandler} color="inherit">
-                  <Typography
-                    sx={{
-                      width: '52px',
-                      height: '52px',
-                      borderRadius: '35px',
-                      border: '2px solid white',
-                      fontSize: '12px',
-                      padding: '15px 0 0 0',
-                      textDecoration: 'underline',
-                    }}>
-                    назад
-                  </Typography>
-                </Button>
-              )}
+              {!instruction ? ( // eslint-disable-line
+                !isBackButton ? (
+                  <Button onClick={exitHandler} color="inherit">
+                    <Typography
+                      sx={{
+                        width: '52px',
+                        height: '52px',
+                        borderRadius: '35px',
+                        border: '2px solid white',
+                        fontSize: '12px',
+                        padding: '16px 0 0 0',
+                      }}>
+                      выход
+                    </Typography>
+                  </Button>
+                ) : (
+                  <Button onClick={backHandler} color="inherit">
+                    <Typography
+                      sx={{
+                        width: '52px',
+                        height: '52px',
+                        borderRadius: '35px',
+                        border: '2px solid white',
+                        fontSize: '12px',
+                        padding: '15px 0 0 0',
+                        textDecoration: 'underline',
+                      }}>
+                      назад
+                    </Typography>
+                  </Button>
+                )
+              ) : null}
             </Box>
           </Toolbar>
         </AppBar>
