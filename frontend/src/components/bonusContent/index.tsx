@@ -35,7 +35,7 @@ const BonusContent: React.FC = () => {
             margin: '0 0 20px 0',
           }}>
           <Typography sx={{ display: 'block', margin: '0 0 20px 0' }}>
-            Как правильно медитировать:{' '}
+            Инструкция, как правильно медитировать:{' '}
             <a href="https://drive.google.com/file/d/1q8Q8ef7aztCjjlhxOKpHQ5vASJdWtBS7/view?usp=sharing">
               Скачать
             </a>
