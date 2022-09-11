@@ -8,10 +8,12 @@ import authTokenHandler from 'redux/reducers/auth/authStorage'
 import { useTypedSelector } from 'redux/store'
 
 const Login: FC = () => {
-  const { isAuth } = useTypedSelector((state) => state.authReducer)
+  const { isAuth } = useTypedSelector((state) => ({
+    isAuth: state.authReducer.isAuth,
+  }))
   const isToken = authTokenHandler.checkToken()
   if (isToken) {
-    isAuth && alert('Добро пожаловать !') // eslint-disable-line
+    isAuth && console.log('авторизациия...') // eslint-disable-line
     return <Navigate to="/articles" replace />
   }
   return (
