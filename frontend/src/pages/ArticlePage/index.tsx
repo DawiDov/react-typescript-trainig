@@ -11,11 +11,11 @@ import { useTypedSelector } from 'redux/store'
 
 const ArticlePage: React.FC = () => {
   const { articleText } = useTypedSelector((state) => state.articleTextReducer)
-  const location = useArticleID()
+  const articleId = useArticleID()
   const { setIsBackButton, getArticleText, getBonusContent } = useActions()
   useEffect(() => {
-    getArticleText(location)
-    getBonusContent(location)
+    getArticleText(articleId)
+    getBonusContent(articleId)
     setIsBackButton(true)
   }, [])
   const isToken = authTokenHandler.checkToken()
