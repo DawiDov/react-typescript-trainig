@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
-import { Layout, Row, Card } from 'antd'
+import { Row, Card } from 'antd'
+import { Box } from '@mui/material'
 import { Navigate } from 'react-router-dom'
 import AuthForm from 'components/form'
 import 'antd/dist/antd.css'
@@ -17,13 +18,13 @@ const Login: FC = () => {
     return <Navigate to="/articles" replace />
   }
   return (
-    <Layout>
+    <Box>
       <Row justify="center" align="middle" className="h100">
         <Card className="loginCard">
           <AuthForm />
         </Card>
       </Row>
-    </Layout>
+    </Box>
   )
 }
 
