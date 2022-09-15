@@ -21,7 +21,12 @@ const Tile: React.FC<TypeArticles> = ({ pk, title, label }) => { // eslint-disab
   }
 
   return (
-    <button type="button" onClick={linkHandler}>
+    <button
+      type="button"
+      onClick={linkHandler}
+      style={{
+        borderRadius: '20px',
+      }}>
       <Paper
         className="tile"
         elevation={5}
@@ -29,7 +34,7 @@ const Tile: React.FC<TypeArticles> = ({ pk, title, label }) => { // eslint-disab
         sx={{
           height: '90px',
           width: 'calc(100vw - 60px)',
-          borderRadius: '10px',
+          borderRadius: '20px',
           backgroundColor: '#18a6d1',
         }}>
         <Grid
