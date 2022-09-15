@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 
 import useActions from 'hooks/useActions'
 import { useTypedSelector } from 'redux/store'
@@ -24,7 +24,7 @@ const Home: React.FC = () => {
   let currentPage: string | null = sessionStorage.getItem('currentPage')
   currentPage = currentPage == null ? '1' : currentPage
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     getArticles(+currentPage!)
     getArticleAccess()
     setIsBackButton(false)
