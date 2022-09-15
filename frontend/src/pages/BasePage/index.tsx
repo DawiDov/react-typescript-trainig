@@ -4,25 +4,41 @@ import { Navigate } from 'react-router-dom'
 import useArticleID from 'hooks/useArticleID'
 import authTokenHandler from 'redux/reducers/auth/authStorage'
 import useActions from 'hooks/useActions'
+import useAccess from 'hooks/useAccess'
 import ArticleText from 'components/articleText'
 import BonusContent from 'components/bonusContent'
 import AccessButton from 'components/accessButton'
 import { useTypedSelector } from 'redux/store'
 
 const BasePage: React.FC = () => {
-  const { articleText } = useTypedSelector((state) => state.articleTextReducer)
+  const { getArticleAccess, setIsBackButton, getArticleText, getBonusContent } =
+    useActions()
+
+  const { pk } = useTypedSelector((state) => ({
+    pk: state.articleTextReducer.articleText?.article_id?.pk,
+  }))
+  useEffect(() => {
+    getArticleAccess()
+  }, [])
+  const isBlocked = useAccess(pk!)
+
   const location = useArticleID()
-  const { setIsBackButton, getArticleText, getBonusContent } = useActions()
+
+  const isToken = authTokenHandler.checkToken()
+
   useEffect(() => {
     getArticleText(location)
     getBonusContent(location)
     setIsBackButton(true)
   }, [])
-  const isToken = authTokenHandler.checkToken()
 
   if (!isToken) {
     return <Navigate to="/login" replace />
   }
+  if (isBlocked) {
+    return <Navigate to="/articles" replace />
+  }
+
   return (
     <Container
       sx={{
@@ -30,9 +46,7 @@ const BasePage: React.FC = () => {
       }}>
       <ArticleText />
       <BonusContent />
-      {articleText?.article_id && (
-        <AccessButton pk={articleText.article_id.pk} />
-      )}
+      <AccessButton pk={pk!} />
     </Container>
   )
 }
