@@ -24,7 +24,7 @@ const AuthForm: React.FC = () => {
       autoComplete="off">
       {error && <div style={{ color: 'red' }}>{error}</div>}
       <Form.Item
-        label="User"
+        label="user"
         name="username"
         rules={[rules.required('Введите имя пользователя!')]}>
         <Input
@@ -34,7 +34,7 @@ const AuthForm: React.FC = () => {
       </Form.Item>
 
       <Form.Item
-        label="Pass"
+        label="pass"
         name="password"
         rules={[rules.required('Введите пароль!')]}>
         <Input.Password
