@@ -26,6 +26,7 @@ const Tile: React.FC<TypeArticles> = ({ pk, title, label }) => { // eslint-disab
       onClick={linkHandler}
       style={{
         borderRadius: '20px',
+        boxShadow: '3px 3px 2.5px #888',
       }}>
       <Paper
         className="tile"
