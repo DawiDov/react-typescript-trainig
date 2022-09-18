@@ -3,6 +3,7 @@ import { Box, Divider, Typography } from '@mui/material'
 import { Navigate } from 'react-router-dom'
 import authTokenHandler from 'redux/reducers/auth/authStorage'
 import CommonMenuButton from 'pages/Conclusion/button'
+import result from 'icons/result_Increasing_income.png'
 
 const Conclusion = () => {
   const isToken = authTokenHandler.checkToken()
@@ -22,15 +23,25 @@ const Conclusion = () => {
           margin: '0 0 20px 0',
         }}>
         Теперь вы знаете многое о том как устроен мир успешных людей, как они
-        ставят цели и идут к ним. У Вас было много вопросов, и ответы на них вы
-        найдете в своем блокноте, этот блокнот теперь Ваш путеводитель к успеху
-        и удовлетворению от жизни.{' '}
+        ставят цели и идут к ним. Как улучшить своё финансовое положение. Как
+        работать с материальными целями и увеличить уровень дохода.
       </Typography>
       <Typography>
-        Анализируйте себя и окружающий мир, ставьте цели и стремитесь к ним. Все
-        в ВАШИХ руках.
+        У Вас было много вопросов, а ответы на них вы всегда найдете в своем
+        блокноте. Этот блокнот теперь ваш путеводитель к успеху.
       </Typography>
-      <Divider sx={{ margin: '10px' }} />
+      <Typography>
+        <strong>Все в ВАШИХ руках.</strong>
+      </Typography>
+      <img
+        src={result}
+        alt="result list"
+        style={{
+          width: '100%',
+          margin: '20px 0 0 0',
+        }}
+      />
+      <Divider sx={{ margin: '20px' }} />
       <CommonMenuButton />
     </Box>
   )
