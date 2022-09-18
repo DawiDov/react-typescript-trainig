@@ -6,8 +6,11 @@ import lock from 'icons/lock.png'
 import 'components/tile/index.sass'
 import { useNavigate } from 'react-router-dom'
 
-const Tile: React.FC<TypeArticles> = ({ pk, title, label }) => { // eslint-disable-line
+interface TileProps extends TypeArticles {
+  setModal: (arg: boolean) => void | undefined
+}
 
+const Tile: React.FC<TileProps> = ({ pk, title, label, setModal }) => { // eslint-disable-line
 
   const navigate = useNavigate()
   const isBlocked = useAccess(pk)
@@ -16,7 +19,7 @@ const Tile: React.FC<TypeArticles> = ({ pk, title, label }) => { // eslint-disab
       navigate(`/articles/${pk}`)
     }
     if (isBlocked) {
-      alert('Статья заблокированна')
+      setModal(true)
     }
   }
 
