@@ -45,7 +45,6 @@ const BonusContent: React.FC = () => {
             <track default kind="captions" src="meditation" />
             Ваш браузер не поддерживает воспроизведение!
           </audio>
-          <p>Для скачивания нажмите на 3 точки справа и download</p>
         </Box>
       )}
     </Box>
