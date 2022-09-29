@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { Box, Paper, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { TypeArticles } from 'redux/reducers/articles/types'
@@ -10,9 +10,14 @@ const AccessButton: React.FC<Pick<TypeArticles, 'pk'>> = ({ pk }) => { // eslint
   const article = useAccess(pk + 1)
   const { updateArtileAccess } = useActions()
 
-  const accessHandler = () => {
+  const accessHandler = useCallback(() => {
+    if (pk === 5 || pk === 10 || pk === 15) {
+      const value: string | null = sessionStorage.getItem('currentPage')
+      const currentPageValue: number = +value! + 1
+      sessionStorage.setItem('currentPage', currentPageValue.toString())
+    }
     pk === 20 || article && updateArtileAccess(pk + 1, false) // eslint-disable-line
-  }
+  }, [pk])
 
   return (
     <Box
