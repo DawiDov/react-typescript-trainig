@@ -11,6 +11,7 @@ const InstUpdateAccessButton: React.FC = () => {
   }))
   const { updateInstructionAccess } = useActions()
   const accessHandler = () => {
+    sessionStorage.setItem('currentPage', '1')
     instruction && updateInstructionAccess(false) // eslint-disable-line
     return <Navigate to="/articles" replace />
   }
