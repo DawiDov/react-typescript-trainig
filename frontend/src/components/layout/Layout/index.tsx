@@ -13,7 +13,7 @@ const Layout = () => {
   }, [])
 
   useEffect(() => {
-    getArticles(+currentPage!) // eslint-disable-line
+    getArticles(+currentPage!)
   }, [currentPage])
 
   const location = useLocation()
