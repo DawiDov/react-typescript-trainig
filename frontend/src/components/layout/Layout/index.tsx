@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Outlet, useLocation, Navigate } from 'react-router-dom'
 import useActions from 'hooks/useActions'
+
 import Header from 'components/layout/Header'
 import { Box } from '@mui/system'
 
@@ -14,7 +15,6 @@ const Layout = () => {
 
   useEffect(() => {
     getArticles(+currentPage!)
-  }, [currentPage])
 
   const location = useLocation()
 
