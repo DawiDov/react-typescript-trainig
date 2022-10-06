@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { Outlet, useLocation, Navigate } from 'react-router-dom'
 import useActions from 'hooks/useActions'
-import { useTypedSelector } from 'redux/store'
 import Header from 'components/layout/Header'
 import { Box } from '@mui/system'
 
@@ -13,12 +12,8 @@ const Layout = () => {
     getArticleAccess()
   }, [])
 
-  const { instruction } = useTypedSelector((state) => ({
-    instruction: state.articlesReducer.articleAccess?.instruction,
-  }))
-
   useEffect(() => {
-    instruction || getArticles(+currentPage!) // eslint-disable-line
+    getArticles(+currentPage!)
   }, [currentPage])
 
   const location = useLocation()
