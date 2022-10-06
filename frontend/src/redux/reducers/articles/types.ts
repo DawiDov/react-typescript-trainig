@@ -19,7 +19,8 @@ export interface TypeArticlesState {
 /* eslint-disable */
 export enum ArticlesActionEnum {
   SET_ARTICLES = 'SET-ARTICLES',
-  SET_ARTICLE_ACCESS = 'SET_ARTICLE_ACCESS',
+  SET_ARTICLE_ACCESS = 'SET-ARTICLE-ACCESS',
+  SET_CURRENT_ARTICLE_ACCESS = 'SET-CURRENT-ARTICLE-ACCESS',
   SET_COUNT = 'SET-COUNT',
 }
 /* eslint-enable */
@@ -39,7 +40,13 @@ export interface SetArticleAccessAction {
   payload: TypeArticleAccess
 }
 
+export interface SetCurrentArticleAccessAction {
+  type: ArticlesActionEnum.SET_CURRENT_ARTICLE_ACCESS
+  payload: { key: number; data: boolean }
+}
+
 export type AtrticlesActions =
   | SetArticlesAction
   | SetCountAction
   | SetArticleAccessAction
+  | SetCurrentArticleAccessAction

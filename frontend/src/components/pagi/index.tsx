@@ -16,7 +16,9 @@ const Pagi: React.FC = () => {
     sessionStorage.setItem('currentPage', value.toString())
     getArticles(value)
   }
+
   const currentPage: string | null = sessionStorage.getItem('currentPage')
+
   return (
     <Pagination
       page={+currentPage!}
