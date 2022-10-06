@@ -11,15 +11,11 @@ import AccessButton from 'components/accessButton'
 import { useTypedSelector } from 'redux/store'
 
 const BasePage: React.FC = () => {
-  const { getArticleAccess, setIsBackButton, getArticleText, getBonusContent } =
-    useActions()
+  const { setIsBackButton, getArticleText, getBonusContent } = useActions()
 
   const { pk } = useTypedSelector((state) => ({
     pk: state.articleTextReducer.articleText?.article_id?.pk,
   }))
-  useEffect(() => {
-    getArticleAccess()
-  }, [])
   const isBlocked = useAccess(pk!)
 
   const location = useArticleID()

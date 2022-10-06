@@ -5,20 +5,17 @@ import { Navigate } from 'react-router-dom'
 import { Box, Typography } from '@mui/material'
 
 import authTokenHandler from 'redux/reducers/auth/authStorage'
-import useActions from 'hooks/useActions'
 import starActive from 'icons/star_active.png'
 import starEmpty from 'icons/star_empty.png'
 import 'components/starList/index.sass'
 
 const StarList: React.FC = () => {
-  const { getArticleAccess } = useActions()
   const isToken = authTokenHandler.checkToken()
   if (!isToken) {
     return <Navigate to="/login" replace />
   }
   /* eslint-disable */
   const {
-    articleAccess,
     article_1,
     article_2,
     article_3,
@@ -41,7 +38,6 @@ const StarList: React.FC = () => {
     article_20,
   } =
     useTypedSelector((state) => ({
-      articleAccess: state.articlesReducer.articleAccess,
       article_1: state.articlesReducer.articleAccess?.article_1,
       article_2: state.articlesReducer.articleAccess?.article_2,
       article_3: state.articlesReducer.articleAccess?.article_3,
@@ -64,9 +60,6 @@ const StarList: React.FC = () => {
       article_20: state.articlesReducer.articleAccess?.article_20,
     }))
 
-  if (articleAccess === null) {
-    getArticleAccess()
-  }
   return (
     <Box sx={{
       display: 'flex',

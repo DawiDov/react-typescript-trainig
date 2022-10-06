@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import useActions from 'hooks/useActions'
 import { useTypedSelector } from 'redux/store'
@@ -31,18 +31,14 @@ const style = {
 const Home: React.FC = () => {
   const [modal, setModal] = useState(false)
   const isToken = authTokenHandler.checkToken()
-  const { getArticles, setIsBackButton, getArticleAccess } = useActions()
+  const { setIsBackButton } = useActions()
 
   const { articles, instruction } = useTypedSelector((state) => ({
     articles: state.articlesReducer.articles,
     instruction: state.articlesReducer.articleAccess?.instruction,
   }))
-  let currentPage: string | null = sessionStorage.getItem('currentPage')
-  currentPage = currentPage == null ? '1' : currentPage
 
-  useLayoutEffect(() => {
-    getArticles(+currentPage!)
-    getArticleAccess()
+  useEffect(() => {
     setIsBackButton(false)
   }, [])
 

@@ -30,6 +30,14 @@ const articlesReducer = (
         ...state,
         articleAccess: action.payload,
       }
+    case ArticlesActionEnum.SET_CURRENT_ARTICLE_ACCESS:
+      return {
+        ...state,
+        articleAccess: {
+          ...state.articleAccess,
+          [`article_${action.payload.key}`]: action.payload.data,
+        },
+      }
     default:
       return state
   }
